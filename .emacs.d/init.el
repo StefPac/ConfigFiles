@@ -3,5 +3,6 @@
 (require 'spacific-base)
 (require 'spacific-looknfeel)
 (require 'spacific-git)
+(require 'spacific-org)
 
 
