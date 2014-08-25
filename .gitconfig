@@ -1,3 +1,5 @@
 [user]
 	name = Stefano Pacifico
 	email = stefano.pacifico@ieee.org
+[push]
+	default = simple

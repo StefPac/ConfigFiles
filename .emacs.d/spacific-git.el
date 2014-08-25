@@ -1,6 +1,7 @@
 ;; Add git-el to the loadpath
-(load "/usr/share/emacs24/site-lisp/git/git.el")
-(load "/usr/share/emacs24/site-lisp/git/git-blame.el")
+(add-to-list 'load-path "/usr/local/share/git-core/contrib/emacs")
+(require 'git)
+(require 'git-blame)
 (add-to-list 'vc-handled-backends 'GIT)
 
 (provide 'spacific-git)
