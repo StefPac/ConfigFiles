@@ -1,5 +1,11 @@
 ;; add latest org-mode to load path
-(add-to-list 'load-path (expand-file-name "/Users/stefy/.emacs.d/elpa/org-plus-contrib-20140804" t))
+(add-to-list 'load-path (expand-file-name "/Users/stefy/.emacs.d/elpa/org-plus-contrib" t))
+
+;; Useful org key bindings
+(global-set-key "\C-cl" ’org-store-link)
+(global-set-key "\C-cc" ’org-capture)
+(global-set-key "\C-ca" ’org-agenda)
+(global-set-key "\C-cb" ’org-iswitchb)
 
 ;; Add better ELPA sources
 (require 'package)
@@ -31,7 +37,7 @@
 (setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
 
 ;; Add LATEX_CMD: 
-(require 'org-latex)
+(require 'ox-latex)
 (setq org-export-latex-listings t)
 
 ;; ;; Originally taken from Bruno Tavernier: http://thread.gmane.org/gmane.emacs.orgmode/31150/focus=31432
@@ -102,4 +108,14 @@
 
 ;; (add-hook 'org-export-latex-after-initial-vars-hook 'my-auto-tex-parameters)
 
+;; Add 'letter' document class
+(add-to-list 'org-latex-classes
+             '("letter"
+               "\\documentclass{letter}"
+               ("\\part{%s}" . "\\part*{%s}")
+               ("\\chapter{%s}" . "\\chapter*{%s}")
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
+             )
 (provide 'spacific-org)
