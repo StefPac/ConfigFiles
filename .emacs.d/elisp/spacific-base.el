@@ -11,6 +11,12 @@
 (require 'ansi-color) ; translate ansi escape sequences into colors
 (require 'tooltip)
 
+;; Always use UTF-8
+(set-language-environment "UTF-8")
+
+;; Enable narrow-to-region
+(put 'narrow-to-region 'disabled nil)
+
 ;;Temp files 
 (setq
  backup-by-copying t      ; don't clobber symlinks
@@ -20,5 +26,8 @@
  kept-new-versions 6
  kept-old-versions 2
  version-control t)       ; use versioned backups
+
+;; Say y or n
+(fset 'yes-or-no-p 'y-or-n-p)
 
 (provide 'spacific-base)

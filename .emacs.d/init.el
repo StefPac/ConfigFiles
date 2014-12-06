@@ -21,9 +21,20 @@
 ;; Load Markdown 
 (require 'spacific-markdown)
 
-;; Load Macabook specific settings 
+;; Load Macbook specific settings 
 (require 'spacific-macbook)
 
+;; Load Evil Mode
+(require 'spacific-evil)
+
+;; Load clojure setup
+(require 'spacific-clojure)
+
+;; Setup Helm
+(require 'spacific-helm)
+
+;; Load javascript settings
+(require 'spacific-js)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
