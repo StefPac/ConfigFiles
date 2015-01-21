@@ -12,8 +12,12 @@
 (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
 
 ;; Remap ';' to ':'
-
 (define-key evil-normal-state-map (kbd ";") 'evil-ex)
+
+;; Insert new line in normal mode with <RET>
+;; (define-key evil-normal-state-map (kbd "RET") (lambda ()
+;;   (interactive)
+;;   (evil-insert-newline-below)
 
 ;; Don't move back the cursor when exiting insert mode.
 
