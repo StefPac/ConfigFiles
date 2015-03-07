@@ -36,15 +36,8 @@
   (not (string= lang "ditaa")))  ; don't ask for ditaa
 (setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
 
-;; Add LATEX_CMD: 
+;; ORG-LATEX
 (require 'ox-latex)
-(add-to-list 'org-latex-packages-alist '("" "listings"))
-(add-to-list 'org-latex-packages-alist '("" "color"))
-;; (setq org-latex-listings 'minted)
-;; (add-to-list 'org-latex-packages-alist '("" "minted"))
-;; (setq org-latex-to-pdf-process
-      ;; '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f" "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f" "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
-
 
 ;; Originally taken from Bruno Tavernier: http://thread.gmane.org/gmane.emacs.orgmode/31150/focus=31432
 ;; but adapted to use latexmk 4.20 or higher.
@@ -61,58 +54,67 @@
   (if (string-match "LATEX_CMD: xelatex" (buffer-string))
       (setq texcmd "latexmk -pdflatex='xelatex -shell-escape' -pdf -quiet %f"))
   ;; LaTeX compilation command
-  (setq org-latex-to-pdf-process (list texcmd)))
+  (setq org-latex-pdf-process (list texcmd)))
 
 (add-hook 'org-export-before-processing-hook 'my-auto-tex-cmd)
 
 
-;; Specify default packages to be included in every tex file, whether pdflatex or xelatex
-(setq org-latex-packages-alist
-      '(("" "graphicx" t)
-            ("" "longtable" nil)
-            ("" "float" nil)))
 
- (defun my-auto-tex-parameters (backend-symbol)
-	;; "Automatically select the tex packages to include."
-        ;; default packages for ordinary latex or pdflatex export
-   (setq org-latex-default-packages-alist
-      '(("AUTO" "inputenc" t)
-   	("T1"   "fontenc"   t)
-   	(""     "fixltx2e"  nil)
-   	(""     "wrapfig"   nil)
-   	(""     "soul"      t)
-   	(""     "textcomp"  t)
-   	(""     "marvosym"  t)
-   	(""     "wasysym"   t)
-   	(""     "latexsym"  t)
-   	(""     "amssymb"   t)
-   	(""     "hyperref"  nil)))
+(defun my-auto-tex-parameters (backend-symbol)
+       ;; "Automatically select the tex packages to include."
+       ;; default packages for ordinary latex or pdflatex export
+  (setq org-latex-default-packages-alist
+     '(("AUTO" "inputenc" t)
+       ("T1"   "fontenc"   t)
+       (""     "fixltx2e"  nil)
+       (""     "wrapfig"   nil)
+       (""     "soul"      t)
+       (""     "textcomp"  t)
+       (""     "marvosym"  t)
+       (""     "wasysym"   t)
+       (""     "latexsym"  t)
+       (""     "amssymb"   t)
+       (""     "hyperref"  nil)))
 
-   ;; Packages to include when xelatex is used
-   (if (string-match "LATEX_CMD: xelatex" (buffer-string))
-       (setq org-latex-default-packages-alist
-	     '(("" "fontspec" t)
-	       ("" "xunicode" t)
-	       ("" "url" t)
-	       ("" "rotating" t)
-	       ("american" "babel" t)
-	       ("babel" "csquotes" t)
-	       ("" "soul" t)
-	       ("xetex" "hyperref" nil)
-	       )))
+  ;; Packages to include when xelatex is used
+  (if (string-match "LATEX_CMD: xelatex" (buffer-string))
+      (setq org-latex-default-packages-alist
+	    '(("" "xunicode" t)
+	      ("" "url" t)
+	      ("" "rotating" t)
+	      ("american" "babel" t)
+	      ("babel" "csquotes" t)
+	      ("" "soul" t)
+	      ("" "float" nil)
+              ("" "longtable" nil)
+	      ("xetex" "graphicx" nil)
+	      ("xetex" "hyperref" nil)
+	      )))
 
-   (if (string-match "LATEX_CMD: xelatex" (buffer-string))
-       (setq org-latex-classes
-	     (cons '("article"
-		     "\\documentclass[11pt,article,oneside]{memoir}"
-		     ("\\section{%s}" . "\\section*{%s}")
-		     ("\\subsection{%s}" . "\\subsection*{%s}")
-		     ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-		     ("\\paragraph{%s}" . "\\paragraph*{%s}")
-		     ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
-		   org-latex-classes))))
+  (if (string-match "LATEX_CMD: xelatex" (buffer-string))
+      (setq org-latex-classes
+	    (cons '("article"
+		    "\\documentclass[11pt,article,oneside]{memoir}"
+		    ("\\section{%s}" . "\\section*{%s}")
+		    ("\\subsection{%s}" . "\\subsection*{%s}")
+		    ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+		    ("\\paragraph{%s}" . "\\paragraph*{%s}")
+		    ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
+		  org-latex-classes)))
+)
 
 (add-hook 'org-export-before-processing-hook 'my-auto-tex-parameters)
+
+;; Add LATEX_CMD: 
+
+;; need to be here to append to the list
+
+(add-to-list 'org-latex-packages-alist '("" "listings"))
+(add-to-list 'org-latex-packages-alist '("" "color"))
+;; (setq org-latex-listings 'minted)
+;; (add-to-list 'org-latex-packages-alist '("" "minted"))
+;; (setq org-latex-to-pdf-process
+      ;; '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f" "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f" "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
 
 ;; Add 'letter' document class
 (add-to-list 'org-latex-classes
@@ -126,6 +128,7 @@
              )
 (defun org-mode-reftex-setup ()
   (load-library "reftex")
+  (require 'ox-bibtex)
   (and (buffer-file-name) (file-exists-p (buffer-file-name))
        (progn
 	;enable auto-revert-mode to update reftex when bibtex file changes on disk
@@ -136,11 +139,19 @@
 	  '((?b . "[[bib:%l][%l-bib]]")
 	    (?n . "[[notes:%l][%l-notes]]")
 	    (?p . "[[papers:%l][%l-paper]]")
-	    (?t . "%t")
+	    (?c . "[[cite:%l][%l-cite]]")
+	    (?i . "[[citep:%l][%l-citep]]")
+	    (?t . "[[citet:%l][%l-citet]]")
+	    (?l . "%t")
 	    (?h . "** %t\n:PROPERTIES:\n:Custom_ID: %l\n:END:\n[[papers:%l][%l-paper]]")))))
   (define-key org-mode-map (kbd "C-c )") 'reftex-citation)
   (define-key org-mode-map (kbd "C-c (") 'org-mode-reftex-search))
 
 (add-hook 'org-mode-hook 'org-mode-reftex-setup)
+
+(defun org-mode-reftex-search ()
+  ;;jump to the notes for the paper pointed to at from reftex search
+  (interactive)
+    (org-open-link-from-string (format "[[notes:%s]]" (first (reftex-citation t)))))
 
 (provide 'spacific-org)

@@ -1,5 +1,8 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/elisp"))
 
+;; setup emacs server environment
+(require 'spacific-server)
+
 ;; setup package aenvironment
 (require 'spacific-package)
 
