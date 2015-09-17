@@ -1,9 +1,6 @@
 ;; Enable transient mark region (highlighiting of the region)
 (transient-mark-mode 1)
 
-;; Enable iswitch-buffer by default
-(iswitchb-mode 1)
-
 ;; Various
 ;;(require 'folding)
 (require 'flyspell)

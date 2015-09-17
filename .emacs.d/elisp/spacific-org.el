@@ -1,10 +1,6 @@
 ;; add latest org-mode to load path
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/org-plus-contrib" t))
 
-;; Add better ELPA sources
-(require 'package)
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-
 ;; set the path for ditaa
 (setq org-ditaa-jar-path "/usr/local/Cellar/ditaa/0.9/libexec/ditaa0_9.jar")
 
@@ -17,10 +13,17 @@
 ;; Fix exporting
 (require 'ox-publish)
 
+;; IPython
+(require 'ob-ipython)
+
 ;; Enable Babel
 (org-babel-do-load-languages
  'org-babel-load-languages
- '((ditaa . t))) ; this line activat
+ '(
+    (ditaa . t) ; this line activat
+    (python . t)
+    (sh . t)
+))
 
 ;; Without this `fill-paragrah` does not work in `org-mode`
 (setq org-list-allow-alphabetical t)
