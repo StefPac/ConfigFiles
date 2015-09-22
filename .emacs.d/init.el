@@ -19,7 +19,7 @@
 (require 'spacific-org) 
 
 ;; IRC settings
-;;(require 'spacific-rcirc) 
+(require 'spacific-erc) 
 
 ;; Load Markdown 
 (require 'spacific-markdown)
