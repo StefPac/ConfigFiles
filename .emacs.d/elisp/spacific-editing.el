@@ -14,7 +14,10 @@
  tab-width 4)
 
 (delete-selection-mode)
-(global-set-key (kbd "RET") 'newline-and-indent)  ; automatically indent when press RET
+
+;; Indentation
+(global-set-key (kbd "RET") 'newline-and-indent)  ; Automatically indent when press RET.
+(setq-default indent-tabs-mode nil)  ; Don't use tabs, use spaces.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; GROUP: Editing -> Electricity      ;;
