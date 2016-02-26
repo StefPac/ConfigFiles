@@ -8,10 +8,10 @@
 
 ;; Enable spotlight (from
 ;; https://github.com/codemac/config/blob/master/emacs.d/boot.org)
-(delete helm-c-source-locate helm-for-files-preferred-list)
+;; (delete helm-c-source-locate helm-for-files-preferred-list)
 
-(when (eq system-type 'darwin)
-    (add-to-list 'helm-for-files-preferred-list 'helm-c-source-mac-spotlight))
+;; (when (eq system-type 'darwin)
+;;     (add-to-list 'helm-for-files-preferred-list 'helm-c-source-mac-spotlight))
 
 ;; Fix helm-top to work on mac os x..
 (when (eq system-type 'darwin)
