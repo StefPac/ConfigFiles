@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -u 
+set -e
+
+# disable game center daemon from startup 
+defaults write com.apple.gamed Disabled -bool true
