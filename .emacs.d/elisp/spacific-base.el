@@ -27,4 +27,7 @@
 ;; Say y or n
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;; Turn off bell
+(setq ring-bell-function (lambda nil (message "")))
+
 (provide 'spacific-base)

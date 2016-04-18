@@ -55,7 +55,6 @@
   key-chord          
   markdown-mode      
   multiple-cursors   
-  org                
   org-plus-contrib   
   ox-gfm             
   ox-rst             

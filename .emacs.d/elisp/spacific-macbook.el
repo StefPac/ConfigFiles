@@ -7,5 +7,6 @@
 
 
 (global-set-key (kbd "<f9>") (kbd "<insert>"))
+(setq visible-bell nil)
 
 (provide 'spacific-macbook)

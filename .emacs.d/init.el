@@ -6,14 +6,14 @@
 ;; setup package aenvironment
 (require 'spacific-package)
 
-;; generic
+;;generic
 (require 'spacific-base)
 
 ;; eye-candy
 (require 'spacific-looknfeel)
 
 ;; git
-(require 'spacific-git)
+;;(require 'spacific-git)
 
 ;; org-mode
 (require 'spacific-org) 
