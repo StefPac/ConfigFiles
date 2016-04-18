@@ -52,10 +52,10 @@
   ;;(setq texcmd "latexmk -dvi -pdfps -quiet %f")
   ;; pdflatex -> .pdf
   ;;(if (string-match "LATEX_CMD: pdflatex" (buffer-string))
-  (setq texcmd "latexmk -pdf -quiet %f")
+  (setq texcmd "latexmk -pdf -f -quiet %f")
   ;; xelatex -> .pdf
   (if (string-match "LATEX_CMD: xelatex" (buffer-string))
-      (setq texcmd "latexmk -pdflatex='xelatex -shell-escape' -pdf -quiet %f"))
+      (setq texcmd "latexmk -pdflatex='xelatex -f -shell-escape' -pdf -quiet %f"))
   ;; LaTeX compilation command
   (setq org-latex-pdf-process (list texcmd)))
 
