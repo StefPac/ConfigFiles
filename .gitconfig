@@ -1,5 +1,8 @@
 [user]
-	name = Stefano Pacifico
-	email = github@pacifico.cc
+	useConfigOnly = true
 [push]
 	default = simple
+[core]
+    autocrlf = input
+[submodule]
+    recurse = true

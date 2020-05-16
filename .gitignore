@@ -4,6 +4,9 @@
 .emacs.d/url
 .emacs.d/tramp
 .emacs.d/.org-id-locations
+.emacs.d/transient
 .emacs.d/spacific-erc-auth.el
 .DS_Store#*
 .swp
+.DS_Store
+.irssi

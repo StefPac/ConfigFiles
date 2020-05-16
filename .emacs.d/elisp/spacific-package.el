@@ -1,5 +1,3 @@
-;;(package-initialize)
-
 (require 'package)
 
 (add-to-list 'package-archives
@@ -15,7 +13,7 @@
 ; activate all the packages (in particular autoloads)
 (package-initialize)
 
-(setq required-packages '(ac-js2             
+(let ((required-packages '(  ac-js2             
   async              
   auctex             
   caml               
@@ -31,6 +29,7 @@
   evil-god-state     
   evil-leader        
   evil-lisp-state    
+  evil-magit
   evil-matchit       
   evil-nerd-commenter
   evil-numbers       
@@ -53,6 +52,11 @@
   js2-mode           
   js2-refactor       
   key-chord          
+  magithub
+  magit-reviewboard
+  magit-gh-pulls
+  magit-diff-flycheck
+  magit
   markdown-mode      
   multiple-cursors   
   ob-ipython
@@ -64,7 +68,7 @@
   parsebib           
   pkg-info           
   projectile         
-  queue              
+  rust-mode
   s                  
   simple-httpd       
   skewer-mode        
@@ -72,14 +76,6 @@
   tuareg             
   undo-tree          
   yasnippet ))
-
-; list the repositories containing them
-;(setq package-archives '(("elpa" . "http://tromey.com/elpa/")
-;                         ("gnu" . "http://elpa.gnu.org/packages/")
-;                         ("marmalade" . "http://marmalade-repo.org/packages/")))
-
-
-
 
 ; fetch the list of packages available 
 (unless package-archive-contents

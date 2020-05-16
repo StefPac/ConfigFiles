@@ -13,10 +13,4 @@
 ;; Remove splash screen
 (setq inhibit-splash-screen t)
 
-;; Remove scroll bars
-(scroll-bar-mode -1)
-
-;; Remove tool bars
-(tool-bar-mode 0)
-
 (provide 'spacific-looknfeel)

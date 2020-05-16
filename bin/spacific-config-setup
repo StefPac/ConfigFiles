@@ -10,13 +10,13 @@ CUR_DIR=$(pwd)
 for i in $(ls -a $CUR_DIR);
 do
     [[ -f $i ]] || continue
-    [[ ! -e $HOME/$i ]] || { echo >&2 "File $HOME/$i already exists. Abort."; exit 1; }
+    [[ ! -e $HOME/$i ]] || { echo >&2 "File $HOME/$i already exists. Skipping $i."; }
 done
 
 for i in $(ls -a $CUR_DIR);
 do
     [[ -f $i ]] || { echo "Skipping $i; not a regular file"; continue; }
-    ln -s $CUR_DIR/$i $HOME/$i
+    ln -s $CUR_DIR/$i $HOME/$i || { echo "Failed to link $i"; continue; }
 done
 
 # Dirs are not regular files but not all dirs should be linked

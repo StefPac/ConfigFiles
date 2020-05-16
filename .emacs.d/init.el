@@ -19,14 +19,8 @@
 ;; eye-candy
 (require 'spacific-looknfeel)
 
-;; git
-;;(require 'spacific-git)
-
 ;; org-mode
 (require 'spacific-org) 
-
-;; IRC settings
-(require 'spacific-erc) 
 
 ;; Load Markdown 
 (require 'spacific-markdown)

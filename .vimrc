@@ -32,6 +32,12 @@
   "set softtabstop=4	"Make backspace remove 4 spaces at a time
   set shiftwidth=4	"Auto-indentation size
 
+  "FILE TYPES"
+  autocmd Filetype html       setlocal ts=2 sw=2 expandtab
+  autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
+  autocmd Filetype make       setlocal ts=4 sw=4 noexpandtab "Keep tabs for Makefiles
+
+
   "AUTOCOMPLETION
   set wildmode=longest,list 
   set complete-=i   "Ignores included files for autocompletion; makes if faster
@@ -107,12 +113,10 @@
   let Tlist_Show_One_File = 1
   let Tlist_GainFocus_On_ToggleOpen = 1
   
-  """"""""" filetype specific options
-  au FileType make setlocal noexpandtab		"disable expandtab for makefiles
-  
   """"""""" CUSTOM KEYBINDINGS
   "map ; to : 
   nnoremap ; :
+  
   " ESC with 'jj'
   inoremap jj <ESC>
 
@@ -224,3 +228,8 @@
   map <Leader>/ :%s/\<<C-R><C-W>\>/
 
   set laststatus=2
+
+  " CUSTOM COMMANDS
+  "
+  " FILTER
+  command! -nargs=? Filter let @a='' | execute 'g/<args>/y A' | new | setlocal bt=nofile | put! a

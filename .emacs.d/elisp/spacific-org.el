@@ -14,15 +14,14 @@
 (require 'ox-publish)
 
 ;; IPython
-(require 'ob-ipython)
+;; (require 'ob-ipython)
 
 ;; Enable Babel
 (org-babel-do-load-languages
  'org-babel-load-languages
  '(
     (ditaa . t) ; this line activat
-    (python . t)
-    (sh . t)
+    (shell . t)
 ))
 
 ;; Without this `fill-paragrah` does not work in `org-mode`
