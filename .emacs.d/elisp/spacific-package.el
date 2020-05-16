@@ -1,6 +1,7 @@
 ;;(package-initialize)
 
 (require 'package)
+
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.org/packages/") t)
 
@@ -10,9 +11,11 @@
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+
+; activate all the packages (in particular autoloads)
 (package-initialize)
 
-(let ((required-packages '(  ac-js2             
+(setq required-packages '(ac-js2             
   async              
   auctex             
   caml               
@@ -26,8 +29,6 @@
   evil-escape        
   evil-exchange      
   evil-god-state     
-  evil-indent-texobject
-  evil-jumper        
   evil-leader        
   evil-lisp-state    
   evil-matchit       
@@ -48,13 +49,13 @@
   helm               
   helm-bibtex        
   helm-projectile    
-  helm-projectile-all
   highlight          
   js2-mode           
   js2-refactor       
   key-chord          
   markdown-mode      
   multiple-cursors   
+  ob-ipython
   org-plus-contrib   
   ox-gfm             
   ox-rst             
@@ -70,6 +71,22 @@
   smartparens        
   tuareg             
   undo-tree          
-  yasnippet ))))
+  yasnippet ))
 
+; list the repositories containing them
+;(setq package-archives '(("elpa" . "http://tromey.com/elpa/")
+;                         ("gnu" . "http://elpa.gnu.org/packages/")
+;                         ("marmalade" . "http://marmalade-repo.org/packages/")))
+
+
+
+
+; fetch the list of packages available 
+(unless package-archive-contents
+  (package-refresh-contents))
+
+; install the missing packages
+(dolist (package required-packages)
+  (unless (package-installed-p package)
+    (package-install package)))
 (provide 'spacific-package)

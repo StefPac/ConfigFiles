@@ -14,3 +14,8 @@ shopt -s histappend                      # append to history, don't overwrite it
 # from http://askubuntu.com/a/673283
 PROMPT_COMMAND='history -a; history -n;'
 
+if [ -f ~/.bashrc ]; then
+. ~/.bashrc
+fi
+
+export PATH="$HOME/.cargo/bin:$PATH"

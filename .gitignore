@@ -5,4 +5,5 @@
 .emacs.d/tramp
 .emacs.d/.org-id-locations
 .emacs.d/spacific-erc-auth.el
-.DS_Store
+.DS_Store#*
+.swp
