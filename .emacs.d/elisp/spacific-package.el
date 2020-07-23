@@ -13,13 +13,15 @@
 ; activate all the packages (in particular autoloads)
 (package-initialize)
 
-(let ((required-packages '(  ac-js2             
+(setq required-packages ' (ac-js2
   async              
   auctex             
   caml               
   cider              
   clojure-mode       
   dash               
+  doom-modeline
+  doom-themes
   elscreen           
   epl                
   evil               
@@ -43,12 +45,16 @@
   evil-terminal-cursor-changer
   evil-visualstar    
   f                  
+  forge
+  github-review
+  github-modern-theme
   god-mode           
   goto-chg           
   helm               
   helm-bibtex        
   helm-projectile    
   highlight          
+  indent-guide
   js2-mode           
   js2-refactor       
   key-chord          
