@@ -1,0 +1,23 @@
+#!/bin/sh
+
+set -eu
+
+# From: https://tonsky.me/blog/monitors/
+# From: https://www.fontsmoothingadjuster.com/
+
+# Disable font smoothing:
+# defaults -currentHost write -g AppleFontSmoothing -int 0
+
+# Light font smoothing:
+# defaults -currentHost write -g AppleFontSmoothing -int 1
+
+# Medium font smoothing (default):
+# defaults -currentHost write -g AppleFontSmoothing -int 2
+
+# Heavy font smoothing:
+# defaults -currentHost write -g AppleFontSmoothing -int 3
+
+# Reset to default font smoothing level (medium):
+# defaults -currentHost delete -g AppleFontSmoothing 
+
+defaults -currentHost write -g AppleFontSmoothing -int 0
