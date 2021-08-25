@@ -1,0 +1,6 @@
+NVM_LAZY=1
+
+arch="$(uname -s)"
+case "${arch}" in
+    Darwin*)    export NVM_DIR=$(brew --prefix nvm);;
+esac

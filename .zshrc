@@ -8,6 +8,25 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Architecture
+ARCH="$(uname -s)"
+
+# PATH Settings
+
+## Brew
+if [[ $ARCH = "Darwin" ]]; then
+   BREW_PREFIX=$(brew --prefix java);
+fi
+
+## Java
+
+if [[ $ARCH = "Darwin" ]]; then
+    path=(${BREW_PREFIX}/bin $path)
+fi
+
+# Source NVM zsh settings
+source $HOME/.nvm-zsh
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -76,7 +95,11 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git nvm)
+
+if [[ $ARCH = "Darwin" ]]; then
+    plugins+=(brew)
+fi
 
 source $ZSH/oh-my-zsh.sh
 
