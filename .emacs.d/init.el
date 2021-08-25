@@ -68,7 +68,7 @@
  '(magit-diff-use-overlays nil)
  '(org-agenda-files '("~/workspace/todo/todo.org"))
  '(package-selected-packages
-   '(exwm github-review forge atom-one-dark-theme monokai-theme magit ob-ipython tuareg ox-rst ox-gfm org-plus-contrib markdown-mode key-chord js2-refactor helm-projectile helm-bibtex evil-visualstar evil-terminal-cursor-changer evil-tabs evil-surround evil-space evil-search-highlight-persist evil-paredit evil-org evil-numbers evil-nerd-commenter evil-matchit evil-lisp-state evil-leader evil-god-state evil-exchange evil-escape evil-args cider auctex ac-js2))
+   '(dockerfile-mode exwm github-review forge atom-one-dark-theme monokai-theme magit ob-ipython tuareg ox-rst ox-gfm org-plus-contrib markdown-mode key-chord js2-refactor helm-projectile helm-bibtex evil-visualstar evil-terminal-cursor-changer evil-tabs evil-surround evil-space evil-search-highlight-persist evil-paredit evil-org evil-numbers evil-nerd-commenter evil-matchit evil-lisp-state evil-leader evil-god-state evil-exchange evil-escape evil-args cider auctex ac-js2))
  '(pos-tip-background-color "#FFFFrF")
  '(pos-tip-foreground-color "#272822")
  '(vc-annotate-background nil)
