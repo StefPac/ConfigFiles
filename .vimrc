@@ -4,8 +4,9 @@
   let mapleader=","   "all custom commands start with ,
 
   "UI SETTINGS
-  " colorscheme spacific "set the right colorscheme
-
+  " set termguicolors
+  colorscheme monokai_pro "set the right colorscheme
+  let g:lightline = {'colorscheme': 'monokai_pro', }
   "BUFFER MANAGEMENT`
   set hid           "Hides the current buffer instead of unloading
   set swb=usetab    "Quickfix will switch to the tab/split that the error is in
@@ -14,7 +15,7 @@
                     " BClose does not close a buffer displayed in multiple
                     " windows.
 
-  set term=dtterm   "So that the console vim has color
+  "" set term=dtterm   "So that the console vim has color
   
   set ru			"Show ruler (current line number, column number)
   set bs=2          "Allow backspacing over indents, lines, and start of insert
@@ -29,7 +30,6 @@
   set expandtab		"Use spaces instead of a tab (to insert tab anyway, in insert mode type Ctrl-V,Tab)
   set tabstop=4		"Manual tab indentation size
   set smartindent   "Smart indentation
-  "set softtabstop=4	"Make backspace remove 4 spaces at a time
   set shiftwidth=4	"Auto-indentation size
 
   "FILE TYPES"
