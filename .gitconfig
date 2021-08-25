@@ -1,5 +1,6 @@
 [user]
 	useConfigOnly = true
+	name = Stefano Pacifico
 [push]
 	default = simple
 [core]
