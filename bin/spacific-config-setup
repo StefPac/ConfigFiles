@@ -1,22 +1,17 @@
-#!/bin/bash
+#!/bin/sh
 
 set -e 
 set -u
 
-CUR_DIR=$(pwd)
+CUR_DIR=$PWD
 
 [[ -e bin/spacific-config-setup ]] || { echo >&2 "Please cd into the bundle before running this script."; exit 1; }
 
 for i in $(ls -a $CUR_DIR);
 do
-    [[ -f $i ]] || continue
-    [[ ! -e $HOME/$i ]] || { echo >&2 "File $HOME/$i already exists. Skipping $i."; }
-done
-
-for i in $(ls -a $CUR_DIR);
-do
     [[ -f $i ]] || { echo "Skipping $i; not a regular file"; continue; }
-    ln -s $CUR_DIR/$i $HOME/$i || { echo "Failed to link $i"; continue; }
+    [[ ! -e $HOME/$i ]] || { echo >&2 "File $HOME/$i already exists. Skipping $i."; continue}
+    ln -s $CUR_DIR/$i $HOME/$i || { echo >&2 "Failed to link $i"; continue; }
 done
 
 # Dirs are not regular files but not all dirs should be linked
