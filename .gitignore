@@ -7,6 +7,8 @@
 .emacs.d/transient
 .emacs.d/spacific-erc-auth.el
 .DS_Store#*
-.swp
+*.swp
 .DS_Store
 .irssi
+*~
+
