@@ -14,7 +14,6 @@ fi
 
 # Rust
 
-export PATH="$HOME/.cargo/bin:$PATH"
 
 # NVM
 
@@ -35,3 +34,4 @@ if [ "$(uname)" = "Darwin" ]; then
         . ~/.bash_profile.darwing
     fi
 fi
+. "$HOME/.cargo/env"
