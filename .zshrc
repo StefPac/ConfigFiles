@@ -11,6 +11,9 @@ fi
 # Architecture
 ARCH="$(uname -s)"
 
+# Terminal settings
+export TERM=xterm-256color
+
 # PATH Settings
 
 ## Brew
@@ -109,6 +112,7 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 export EDITOR='vim'
@@ -127,7 +131,7 @@ export EDITOR='vim'
 if type "gls" > /dev/null; then
     alias ls="gls --group-directories-first --color=auto"
 fi
-
+alias ec="emacsclient -t"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
