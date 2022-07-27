@@ -1,4 +1,6 @@
 (require 'evil)
+(require 'evil-leader)
+(global-evil-leader-mode)
 (evil-mode 1)
 
 ;; Use 'jj' to return to Normal Mode;
@@ -10,6 +12,24 @@
 
 (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
 (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+(define-key evil-motion-state-map (kbd "j") 'evil-next-visual-line)
+(define-key evil-motion-state-map (kbd "k") 'evil-previous-visual-line)
+(define-key evil-visual-state-map (kbd "j") 'evil-next-visual-line)
+(define-key evil-visual-state-map (kbd "k") 'evil-previous-visual-line)
+
+;; From https://github.com/noctuid/evil-guide#leader-key
+;; set leader key in all states
+(evil-leader/set-leader ",") t
+(evil-set-leader nil (kbd "C-SPC"))
+
+;; set leader key in normal state
+(evil-set-leader 'normal (kbd "SPC"))
+
+;; set local leader
+(evil-set-leader 'normal "," t)
+
+; Make horizontal movement cross lines
+(setq-default evil-cross-lines t)
 
 ;; Remap ';' to ':'
 (define-key evil-normal-state-map (kbd ";") 'evil-ex)

@@ -1,8 +1,8 @@
 (when window-system
   (cond ((string-equal system-type "darwin")
-	 (set-default-font "Menlo-15"))
+	 (set-frame-font "Menlo-15"))
 	((string-equal system-type "gnu/linux")
-	 (set-default-font "Droid Sans Mono-12"))))
+	 (set-frame-font "Droid Sans Mono-12"))))
 
 ;; Disable Bell
 (setq visible-bell t)

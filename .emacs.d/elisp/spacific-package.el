@@ -6,9 +6,9 @@
 ;; Add better ELPA sources
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 
-(when (< emacs-major-version 24)
+;;(when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 
 ; activate all the packages (in particular autoloads)
 (package-initialize)
@@ -19,6 +19,7 @@
   caml               
   cider              
   clojure-mode       
+  company
   dash               
   doom-modeline
   doom-themes
@@ -58,6 +59,9 @@
   js2-mode           
   js2-refactor       
   key-chord          
+  lsp-mode
+  lsp-ui
+  lsp-pyright
   magithub
   magit-reviewboard
   magit-gh-pulls
@@ -65,23 +69,30 @@
   magit
   markdown-mode      
   multiple-cursors   
+  neotree
   ob-ipython
   org-plus-contrib   
   ox-gfm             
   ox-rst             
   paredit            
   parsebib           
-  parsebib           
   pkg-info           
   projectile         
+  python-black
   rust-mode
+  rustic
   s                  
   simple-httpd       
   skewer-mode        
   smartparens        
   tuareg             
   undo-tree          
-  yasnippet ))
+  yasnippet
+  yasnippet-snippets))
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
 ; fetch the list of packages available 
 (unless package-archive-contents

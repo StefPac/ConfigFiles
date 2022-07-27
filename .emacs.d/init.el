@@ -1,13 +1,16 @@
+;; Write customizations to a separate file instead of this file.
+(setq custom-file (concat user-emacs-directory "custom.el"))
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
 (package-initialize)
+(require 'use-package)
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/elisp"))
 
-;; setup package aenvironment
+;; setup package environment
 (require 'spacific-package)
 
 ;;generic
@@ -31,11 +34,23 @@
 ;; Load clojure setup
 (require 'spacific-clojure)
 
+;; Setup Projectile
+(require 'spacific-projectile)
+
 ;; Setup Helm
 (require 'spacific-helm)
 
+;; Set LSP for languages
+(require 'spacific-lsp)
+
+;; Load Rust settings
+(require 'spacific-rust)
+
 ;; Load javascript settings
 (require 'spacific-js)
+
+;; Load typescript settings
+(require 'spacific-typescript)
 
 ;; Load C++ settings
 (require 'spacific-cpp)
