@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e 
 set -u
@@ -7,10 +7,15 @@ CUR_DIR=$PWD
 
 [[ -e bin/spacific-config-setup ]] || { echo >&2 "Please cd into the bundle before running this script."; exit 1; }
 
+# install oh-my-zsh
+#
+# needs to be done first because it overwrite .zshrc
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 for i in $(ls -a $CUR_DIR);
 do
     [[ -f $i ]] || { echo "Skipping $i; not a regular file"; continue; }
-    [[ ! -e $HOME/$i ]] || { echo >&2 "File $HOME/$i already exists. Skipping $i."; continue}
+    [[ ! -e $HOME/$i ]] || { echo >&2 "File $HOME/$i already exists. Skipping $i."; continue; }
     ln -s $CUR_DIR/$i $HOME/$i || { echo >&2 "Failed to link $i"; continue; }
 done
 
@@ -20,4 +25,6 @@ done
 # TODO: move all configs to the `dotfiles` directory, and
 # then link all regardless of regular file status. Will avoid this horror.
 
-ln -s .emacs.d $HOME/.emacs.d
+ln -s .emacs.d $HOME/ConfigFiles/.emacs.d
+
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
