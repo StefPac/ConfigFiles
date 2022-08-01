@@ -8,13 +8,15 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Architecture
-ARCH="$(uname -s)"
-
 # Terminal settings
 export TERM=xterm-256color
+export EMACS="*term*"
 
 # PATH Settings
+. "$HOME/.cargo/env"
+
+# Architecture
+ARCH="$(uname -s)"
 
 ## Brew
 if [[ $ARCH = "Darwin" ]]; then
