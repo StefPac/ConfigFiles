@@ -60,7 +60,7 @@
   "set fo+=t           "wrap lines after 80 chars
   set colorcolumn=80   "draw a margin on line 80
   
-  set sh=/bin/bash "use bash for shell
+  set sh=/bin/zsh "use zsh for shell
  
   "MOVEMENT
   nnoremap j gj
