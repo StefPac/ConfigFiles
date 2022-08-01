@@ -1,5 +1,6 @@
 (require 'evil)
 (require 'evil-leader)
+
 (global-evil-leader-mode)
 (evil-mode 1)
 
@@ -55,6 +56,8 @@
 (require 'evil-search-highlight-persist)
 (global-evil-search-highlight-persist t)
 
+;; Undo
+(setq evil-undo-system 'undo-redo)
 
 (evil-define-command cofi/maybe-exit ()
   :repeat change

@@ -1,7 +1,14 @@
-;; Add git-el to the loadpath
-(add-to-list 'load-path "/usr/local/share/git-core/contrib/emacs")
-(require 'git)
-(require 'git-blame)
-(add-to-list 'vc-handled-backends 'GIT)
+(use-package magit
+  :init
+  (message "Loading Magit!")
+  :config
+  (message "Loaded Magit!")
+  :bind (("C-x g" . magit-status)
+         ("C-x C-g" . magit-status)))
+  ;;Currently, `evil-magit` is not working
+  ;;
+  ;;:after (if (featurep `spacific-evil)
+  ;;           (require 'evil-magit))
+
 
 (provide 'spacific-git)

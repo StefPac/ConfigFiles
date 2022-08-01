@@ -16,8 +16,14 @@
 ;;generic
 (require 'spacific-base)
 
+;; editor
+(require 'spacific-editing)
+
 ;; eye-candy
 (require 'spacific-looknfeel)
+
+;; git
+(require 'spacific-git)
 
 ;; org-mode
 (require 'spacific-org) 

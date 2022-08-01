@@ -16,7 +16,7 @@
 (delete-selection-mode)
 
 ;; Undo 
-(global-undo-tree-mode)
+;; (global-undo-tree-mode)
 
 ;; Indentation
 (global-set-key (kbd "RET") 'newline-and-indent)  ; Automatically indent when press RET.
@@ -61,6 +61,7 @@
 
 ;; Scroll one line at a time
 (setq scroll-step            1
+      scroll-margin          7
       scroll-conservatively  10000)
 
 (use-package company
@@ -80,3 +81,7 @@
   (yas-reload-all)
   (add-hook 'prog-mode-hook 'yas-minor-mode)
   (add-hook 'text-mode-hook 'yas-minor-mode))
+
+(setq linum-format "%d ")
+
+(provide `spacific-editing)
