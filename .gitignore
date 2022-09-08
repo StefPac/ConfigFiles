@@ -9,9 +9,12 @@
 .emacs.d/spacific-erc-auth.el
 .emacs.d/transient
 .emacs.d/.cache
+.emacs.d/projects
+
 .DS_Store#*
 *.swp
 .DS_Store
 .irssi
 *~
 *.sqlite
+.ssh
