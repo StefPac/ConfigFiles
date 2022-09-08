@@ -1,0 +1,13 @@
+# `zsh` configuration for MacOs
+
+BREW_JAVA_PREFIX=$(brew --prefix java);
+plugins+=(brew)
+path=(${BREW_JAVA_PREFIX}/bin $path)
+
+# Add /usr/local/sbin to path for Brew
+BREW_PREFIX=$(brew --prefix)
+path=(${BREW_PREFIX}/sbin $path)
+
+# Set a more sane number of file descrptors per process.
+ulimit -n 65535
+

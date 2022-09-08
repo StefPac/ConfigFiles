@@ -18,15 +18,9 @@ export EMACS="*term*"
 # Architecture
 ARCH="$(uname -s)"
 
-## Brew
+MACOS_CONFIG=~/ConfigFiles/.zshrc.macos
 if [[ $ARCH = "Darwin" ]]; then
-   BREW_PREFIX=$(brew --prefix java);
-fi
-
-## Java
-
-if [[ $ARCH = "Darwin" ]]; then
-    path=(${BREW_PREFIX}/bin $path)
+    source $MACOS_CONFIG
 fi
 
 # Source NVM zsh settings
@@ -102,9 +96,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git nvm)
 
-if [[ $ARCH = "Darwin" ]]; then
-    plugins+=(brew)
-fi
 
 source $ZSH/oh-my-zsh.sh
 
