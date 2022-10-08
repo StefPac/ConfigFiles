@@ -25,6 +25,7 @@ done
 # TODO: move all configs to the `dotfiles` directory, and
 # then link all regardless of regular file status. Will avoid this horror.
 
-ln -s .emacs.d $HOME/ConfigFiles/.emacs.d
+ln -s $HOME/ConfigFiles/.emacs.d $HOME/.emacs.d
+ln -s $HOME/ConfigFiles/.vim $HOME/.vim
 
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
