@@ -10,7 +10,8 @@ CUR_DIR=$PWD
 # install oh-my-zsh
 #
 # needs to be done first because it overwrite .zshrc
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || true
+rm -rf $HOME/.zshrc
 
 for i in $(ls -a $CUR_DIR);
 do
