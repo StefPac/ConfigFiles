@@ -12,14 +12,36 @@ fi
 export TERM=xterm-256color
 export EMACS="*term*"
 
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+export EDITOR='vim'
+
 # PATH Settings
 . "$HOME/.cargo/env"
+
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+. "$HOME/.cargo/env"
+
+export PYENV_ROOT="$HOME/.pyenv"
+if [-d "$PYENV_ROOT" ] ; then
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init --path)"
+fi
 
 # Architecture
 ARCH="$(uname -s)"
 
-MACOS_CONFIG=~/ConfigFiles/.zshrc.macos
 if [[ $ARCH = "Darwin" ]]; then
+    MACOS_CONFIG=~/ConfigFiles/.zshrc.macos
     source $MACOS_CONFIG
 fi
 
@@ -98,17 +120,6 @@ plugins=(git nvm)
 
 
 source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-export EDITOR='vim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
