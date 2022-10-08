@@ -8,6 +8,6 @@ path=(${BREW_JAVA_PREFIX}/bin $path)
 BREW_PREFIX=$(brew --prefix)
 path=(${BREW_PREFIX}/sbin $path)
 
-# Set a more sane number of file descrptors per process.
+# Set a more sane number of file descriptors per process.
 ulimit -n 65535
 

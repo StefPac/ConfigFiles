@@ -23,18 +23,12 @@ export LC_ALL=en_US.UTF-8
 # Preferred editor for local and remote sessions
 export EDITOR='vim'
 
-# PATH Settings
-. "$HOME/.cargo/env"
-
 if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
+    path=("$HOME/.local/bin" path)
 fi
-. "$HOME/.cargo/env"
 
-export PYENV_ROOT="$HOME/.pyenv"
-if [-d "$PYENV_ROOT" ] ; then
-    export PATH="$PYENV_ROOT/bin:$PATH"
-    eval "$(pyenv init --path)"
+if [ -d "$HOME/bin" ] ; then
+    path=("$HOME/bin" path)
 fi
 
 # Architecture
@@ -47,6 +41,17 @@ fi
 
 # Source NVM zsh settings
 source $HOME/.nvm-zsh
+
+# Pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+if [-d "$PYENV_ROOT" ] ; then
+    path=("$PYENV_ROOT/bin:$PATH" path)
+    eval "$(pyenv init --path)"
+fi
+
+# Rust and Cargo
+. "$HOME/.cargo/env"
+
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
