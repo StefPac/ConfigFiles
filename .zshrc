@@ -44,7 +44,7 @@ source $HOME/.nvm-zsh
 
 # Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
-if [-d "$PYENV_ROOT" ] ; then
+if [ -d "$PYENV_ROOT" ] ; then
     path=("$PYENV_ROOT/bin:$PATH" path)
     eval "$(pyenv init --path)"
 fi
