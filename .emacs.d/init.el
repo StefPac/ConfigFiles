@@ -5,7 +5,6 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
-(package-initialize)
 (require 'use-package)
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/elisp"))
@@ -13,7 +12,7 @@
 ;; setup package environment
 (require 'spacific-package)
 
-;;generic
+;; generic
 (require 'spacific-base)
 
 ;; editor
@@ -64,6 +63,8 @@
 ;; setup emacs server environment
 (require 'spacific-server)
 
+;; Emacs ERC
+(require 'spacific-erc)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -87,7 +88,6 @@
      ("#F309DF" . 85)
      ("#3C3D37" . 100)))
  '(magit-diff-use-overlays nil)
- '(org-agenda-files '("~/workspace/todo/todo.org"))
  '(package-selected-packages
    '(dockerfile-mode exwm github-review forge atom-one-dark-theme monokai-theme magit ob-ipython tuareg ox-rst ox-gfm org-plus-contrib markdown-mode key-chord js2-refactor helm-projectile helm-bibtex evil-visualstar evil-terminal-cursor-changer evil-tabs evil-surround evil-space evil-search-highlight-persist evil-paredit evil-org evil-numbers evil-nerd-commenter evil-matchit evil-lisp-state evil-leader evil-god-state evil-exchange evil-escape evil-args cider auctex ac-js2))
  '(pos-tip-background-color "#FFFFrF")
