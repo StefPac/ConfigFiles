@@ -1,1 +1,53 @@
+# Useful keybindings
+
+# Key Bindings	| Description
+# C-x (, C-x )	| Start/Stop macro recorder
+# C-x e	        | Play last macro
+# C-x P	        | Print out macro (Note you must bind the command to a key for this to work)
+# M-<, M->	    | Go to beginning/end of the history list
+# C-r, C-s	    | Reverse/Forward isearch history
+# M-p, M-n	    | Query search backward/forward through history list
+# M-.	        | Yank (insert) last argument
+# C-p, C-n,     | Up, Down	Previous/Next history entry
+######### Bash Specific
+C-M-e           | Expand environment variable
+M-!	            | Complete command
+M-/             | Complete filename
+M-@             | Complete hostname
+M-$             | Complete variable
+C-x C-e         | Edit and execute command in Emacs
+C-M-o	        | Expand using dynamic abbrev. (Unbound by default; see below)
+######### Python
+C-x h           | Wrap prompt in !help( ... )  (for PDB)
+C-x d           | Wrap prompt in dir( ... )
+
 set history-size 100000
+
+# from https://www.masteringemacs.org/article/keyboard-shortcuts-every-command-line-hacker-should-know-about-gnu-readline
+
+# deafult 500ms too quick
+set keyseq-timeout 1200
+
+# colored autocomplete
+set colored-stats on
+set colored-completion-prefix on
+
+# print keyboard macros
+"\C-xP": print-last-kbd-macro
+
+# wrap in fzf macro
+"\C-xF": "\C-e | fzf)\C-a(\C-a$\C-b\C-a"
+
+# dynamic abbreviation
+"\e\C-o": dabbrev-expand
+
+### Python
+
+$if Python
+
+# Wrap prompt in !help( ... )  (for PDB)
+"\C-xh": "\C-a!help(\C-e)"
+# Wrap prompt in dir( ... )
+"\C-xd": "\C-adir(\C-e)"
+
+$endif
