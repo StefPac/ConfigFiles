@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Fix the issue of keys not repeating when pressed down in the Vim plugin of VSC
+# on MacOs.
+
+# From https://stackoverflow.com/questions/60060373/in-visual-studio-code-how-to-extend-the-maximum-line-width
+
+set -e
+set -u 
+
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false         # For VS Code
+defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false # For VS Code Insider
+defaults write com.visualstudio.code.oss ApplePressAndHoldEnabled -bool false    # For VS Codium
+
+# On October 9 2022 the command `deafaults read -g `ApplePressAndHoldEnabled`
+# would not return any more value, thus disabling the next line.  defaults
+# delete -g ApplePressAndHoldEnabled  # If necessary, reset global defaulf it's nt
+
