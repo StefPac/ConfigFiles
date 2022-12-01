@@ -2,18 +2,21 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/org-plus-contrib" t))
 
 ;; set the path for ditaa
-(setq org-ditaa-jar-path "/usr/local/Cellar/ditaa/0.9/libexec/ditaa0_9.jar")
+;; TODO fix for working on linux too
+(setq org-ditaa-jar-path "/usr/local/Cellar/ditaa/0.11.0_1/libexec/ditaa-0.11.0-standalone.jar")
 
 ;; Make Org-mode add timestamps when completing TODOs
 (setq org-log-done 'time)
 
 ;; Require Agenda
 (require 'org-agenda)
+'(org-agenda-files '("~/work.org" "~/personal.org"))
 
 ;; Fix exporting
 (require 'ox-publish)
 
 ;; IPython
+;; TODO test if still works
 ;; (require 'ob-ipython)
 
 ;; Enable Babel
@@ -156,4 +159,13 @@
   (interactive)
     (org-open-link-from-string (format "[[notes:%s]]" (first (reftex-citation t)))))
 
+(if (require 'toc-org nil t)
+    (progn
+      (add-hook 'org-mode-hook 'toc-org-mode)
+
+      ;; TODO enable in markdown, too
+      ;; (add-hook 'markdown-mode-hook 'toc-org-mode)
+      ;; (define-key markdown-mode-map (kbd "\C-c\C-o") 'toc-org-markdown-follow-thing-at-point))
+  (warn "toc-org not found"))
+)
 (provide 'spacific-org)
