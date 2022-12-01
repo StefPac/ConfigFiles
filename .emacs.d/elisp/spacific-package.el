@@ -3,15 +3,15 @@
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.org/packages/") t)
 
-;; Add better ELPA sources
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-
 ;;(when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 
 ; activate all the packages (in particular autoloads)
 (package-initialize)
+
+;; TODO have the list printed to file upon init, and the load from
+;; that file.
 
 (setq required-packages ' (ac-js2
   async              
@@ -71,7 +71,6 @@
   multiple-cursors   
   neotree
   ob-ipython
-  org-plus-contrib   
   ox-gfm             
   ox-rst             
   paredit            
@@ -85,6 +84,7 @@
   simple-httpd       
   skewer-mode        
   smartparens        
+  toc-org
   tuareg             
   undo-tree          
   yasnippet
