@@ -3,6 +3,25 @@
 
 (require 'erc)
 
+;; Ignore client messages
+(setq erc-hide-list '("JOIN" "PART" "QUIT"))
+(setq erc-lurker-hide-list '("JOIN" "PART" "QUIT"))
+(setq erc-track-exclude-types '("JOIN" "MODE" "NICK" "PART" "QUIT"
+                                "324" "329" "332" "333" "353" "477"))
+
+;; MISC from https://www.reddit.com/r/emacs/comments/8ml6na/tip_how_to_make_erc_fun_to_use/
+(setq erc-autojoin-timing 'ident)
+(setq erc-fill-function 'erc-fill-static)
+(setq erc-fill-static-center 22)
+(setq erc-lurker-threshold-time 43200)
+(setq erc-prompt-for-nickserv-password nil)
+(setq erc-server-reconnect-attempts 5)
+(setq erc-server-reconnect-timeout 3)
+
+(add-to-list 'erc-modules 'notifications)
+(add-to-list 'erc-modules 'spelling)
+(erc-services-mode 1)
+(erc-update-modules)
 ;; This is an example of how to make a new command.  Type "/uptime" to
 ;; use it.
 (defun erc-cmd-UPTIME (&rest ignore)
@@ -26,8 +45,8 @@
 
 (global-set-key "\C-cef" (lambda () (interactive)
 			   (progn
-			     (load "~/.emacs.d/spacific-erc-auth.el")
-			     (erc-tls :server "irc.freenode.net"
+			     (load "~/.emacs.d/elisp/spacific-erc-auth.el")
+			     (erc-tls :server "irc.libera.chat"
 				      :port "7000"
 				      :nick spacific-erc-auth-nick
 				      :password spacific-erc-auth-password)
@@ -53,11 +72,11 @@
 ;;; Options
 
 ;; Join the #emacs and #erc channels whenever connecting to Freenode.
-(setq erc-autojoin-channels-alist '(("freenode.net"
+(setq erc-autojoin-channels-alist '(("libera.chat"
 				     "#emacs"
+                     "#org"
 				     "#erc"
 				     "#debian"
-				     "#puppet"
 				     "#python")))
 
 ;; Interpret mIRC-style color commands in IRC chats
