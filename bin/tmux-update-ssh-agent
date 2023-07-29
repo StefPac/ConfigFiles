@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -e
+set -u
+
+if [ -n "${TMUX}" ]; then
+    eval "$(tmux show-environment -s)"
+fi
