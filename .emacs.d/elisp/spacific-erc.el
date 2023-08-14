@@ -45,7 +45,7 @@
 
 (global-set-key "\C-cef" (lambda () (interactive)
 			   (progn
-			     (load "~/.emacs.d/elisp/spacific-erc-auth.el")
+			     (load "~/.emacs.d/spacific-erc-auth.el")
 			     (erc-tls :server "irc.libera.chat"
 				      :port "7000"
 				      :nick spacific-erc-auth-nick

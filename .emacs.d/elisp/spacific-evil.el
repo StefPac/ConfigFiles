@@ -7,7 +7,7 @@
 ;; Use 'jj' to return to Normal Mode;
 ;; Source: http://stackoverflow.com/questions/10569165/how-to-map-jj-to-esc-in-emacs-evil-mode
 
-(define-key evil-insert-state-map "j" #'cofi/maybe-exit)
+(define-key evil-insert-state-map "j" #'spacific/maybe-exit)
 
 ;; Move visually around wrapped lines.
 
@@ -67,22 +67,37 @@
 (require 'evil-search-highlight-persist)
 (global-evil-search-highlight-persist t)
 
+;; Enable commentary mode
+(require 'evil-commentary)
+(evil-commentary-mode)
+
 ;; Undo
 (setq evil-undo-system 'undo-redo)
 
-(evil-define-command cofi/maybe-exit ()
+(evil-define-command spacific/maybe-exit ()
   :repeat change
   (interactive)
   (let ((modified (buffer-modified-p)))
     (insert "j")
-    (let ((evt (read-event (format "Insert %c to exit insert state" ?j)
-			   nil 0.5)))
+    (let ((evt (read-event (format "Press %c to exit Insert mode" ?j)
+			               nil 0.5)))
       (cond
        ((null evt) (message ""))
+       ;; Use j to return to normal mode
        ((and (integerp evt) (char-equal evt ?j))
-	(delete-char -1)
-	(set-buffer-modified-p modified)
-	(push 'escape unread-command-events))
+	    (delete-char -1)
+	    (set-buffer-modified-p modified)
+	    (push 'escape unread-command-events))
+
+       ;; use tab to perform org-cycle
+       ((and (integerp evt) (char-equal evt ?\t))
+        (delete-char -1)
+        (set-buffer-modified-p modified)
+        (if (derived-mode-p 'org-mode)
+            (org-cycle)))
+       
        (t (setq unread-command-events (append unread-command-events
-					      (list evt))))))))
+					                          (list evt))))))))
 (provide 'spacific-evil)
+
+

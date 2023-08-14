@@ -151,6 +151,7 @@
 	    (?h . "** %t\n:PROPERTIES:\n:Custom_ID: %l\n:END:\n[[papers:%l][%l-paper]]")))))
   (define-key org-mode-map (kbd "C-c )") 'reftex-citation)
   (define-key org-mode-map (kbd "C-c (") 'org-mode-reftex-search))
+  (define-key org-mode-map (kbd "C-c x b") 'org-narrow-to-block)
 
 (add-hook 'org-mode-hook 'org-mode-reftex-setup)
 

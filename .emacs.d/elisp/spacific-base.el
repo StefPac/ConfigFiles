@@ -1,12 +1,24 @@
 ;; Enable transient mark region (highlighiting of the region)
 (transient-mark-mode 1)
 
+;; short answers
+(setq use-short-answers t)
+
 ;; Various
 ;;(require 'folding)
 (require 'flyspell)
 (require 'ffap) ; find-file-at-point
 (require 'ansi-color) ; translate ansi escape sequences into colors
 (require 'tooltip)
+
+
+;; auto-format different source code files extremely intelligently
+;; https://github.com/radian-software/apheleia
+(use-package apheleia
+  :ensure t
+  :config
+  (apheleia-global-mode +1))
+
 
 ;; enable company-mode everywhere (required for LSP)
 (add-hook 'after-init-hook 'global-company-mode)
@@ -49,5 +61,12 @@
 
 ;; Turn off bell
 (setq ring-bell-function (lambda nil (message "")))
+
+;; Check if rg is installed then use rg instead of grep
+(require 'grep)
+(when (executable-find "rg")
+    (grep-apply-setting
+           'grep-find-command
+           "rg --no-heading "))
 
 (provide 'spacific-base)

@@ -1,10 +1,7 @@
 (require 'package)
 
 (add-to-list 'package-archives
-	     '("melpa" . "http://melpa.org/packages/") t)
-
-;;(when (< emacs-major-version 24)
-  ;; For important compatibility libraries like cl-lib
+	         '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 
 ; activate all the packages (in particular autoloads)
@@ -27,12 +24,12 @@
   epl                
   evil               
   evil-args          
+  evil-commentary
   evil-escape        
   evil-exchange      
   evil-god-state     
   evil-leader        
   evil-lisp-state    
-  evil-magit
   evil-matchit       
   evil-nerd-commenter
   evil-numbers       
@@ -49,6 +46,7 @@
   forge
   github-review
   github-modern-theme
+  github-dark-vscode-theme
   god-mode           
   goto-chg           
   helm               
@@ -77,7 +75,10 @@
   parsebib           
   pkg-info           
   projectile         
+  pyenv-mode
   python-black
+  quelpa
+  quelpa-use-package ;; on MacOS check tar is GNU tar
   rust-mode
   rustic
   s                  
@@ -85,6 +86,7 @@
   skewer-mode        
   smartparens        
   toc-org
+  tree-sitter
   tuareg             
   undo-tree          
   yasnippet
@@ -93,6 +95,9 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
+
+(require 'use-package)
+(require 'quelpa-use-package)
 
 ; fetch the list of packages available 
 (unless package-archive-contents
