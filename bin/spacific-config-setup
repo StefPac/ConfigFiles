@@ -30,3 +30,14 @@ ln -s $HOME/ConfigFiles/.emacs.d $HOME/.emacs.d
 ln -s $HOME/ConfigFiles/.vim $HOME/.vim
 
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+# Run default settings 
+bin/osx-adjust-font-hinting
+bin/macos-vsc-fix-vim-repeating-keys
+bin/set-osx-defaults
+
+# Create a true color TERM setting
+tic -x -o $HOME/.terminfo $CUR_DIR/terminfo-24bit.src
+
+# Link beorg folder
+ln -s ~/Library/Mobile\ Documents/iCloud~com~appsonthemove~beorg/Documents/org
