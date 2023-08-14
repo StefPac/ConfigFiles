@@ -11,3 +11,10 @@ path=(${BREW_PREFIX}/sbin $path)
 # Set a more sane number of file descriptors per process.
 ulimit -n 65535
 
+if type "gls" > /dev/null; then
+    alias ls="gls --group-directories-first --color=auto"
+fi
+if type "gtar" > /dev/null; then
+    alias tar="gtar"
+fi
+

@@ -6,5 +6,4 @@
 # not contain commands that produce output or assume the shell is
 # attached to a tty.
 
-# PATH Settings
 . "$HOME/.cargo/env"
