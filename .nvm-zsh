@@ -1,5 +1,5 @@
-NVM_LAZY=1
-
+zstyle ':omz:plugins:nvm' lazy yes
+# NVM_LAZY=1
 arch="$(uname -s)"
 case "${arch}" in
     Darwin*)    export NVM_DIR=$(brew --prefix nvm);;
