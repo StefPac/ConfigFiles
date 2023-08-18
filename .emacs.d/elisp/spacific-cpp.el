@@ -5,3 +5,4 @@
 
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 (provide 'spacific-cpp)
+

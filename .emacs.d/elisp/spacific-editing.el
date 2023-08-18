@@ -65,16 +65,43 @@
       scroll-conservatively  10000)
 
 (use-package company
-  :ensure
+  :ensure t
   :custom
   (company-idle-delay 0.5) ;; how long to wait until popup
-  ;; (company-begin-commands nil) ;; uncomment to disable popup
+  :init (global-company-mode)
+  :diminish company-mode
   :bind
   (:map company-active-map
 	      ("C-n". company-select-next)
 	      ("C-p". company-select-previous)
 	      ("M-<". company-select-first)
 	      ("M->". company-select-last)))
+
+  :config
+  ;; set default `company-backends'
+
+  (setq company-backends
+        '((company-files          ; files & directory
+           company-keywords       ; keywords
+           company-capf)  ; completion-at-point-functions
+          (company-abbrev company-dabbrev)
+          ))
+(use-package company-statistics
+    :ensure t
+    :init
+    (company-statistics-mode))
+(use-package company-web
+    :ensure t)
+(use-package company-try-hard
+    :ensure t
+    :bind
+    (("C-<tab>" . company-try-hard)
+     :map company-active-map
+     ("C-<tab>" . company-try-hard)))
+(use-package company-quickhelp
+    :ensure t
+    :config
+    (company-quickhelp-mode))
 
 (use-package yasnippet
   :config

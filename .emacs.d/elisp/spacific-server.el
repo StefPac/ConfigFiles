@@ -7,7 +7,7 @@
   (save-some-buffers)
     (kill-emacs))
 
-(unless (server-running-p)
+(unless (boundp 'server-process)
   (server-start))
 
 (provide 'spacific-server)

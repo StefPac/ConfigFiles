@@ -43,10 +43,10 @@
 (require 'spacific-helm)
 
 ;; Set LSP for languages
-;;(require 'spacific-lsp)
+(require 'spacific-lsp)
 
 ;; Set eglot
-(require 'spacific-eglot)
+;; (require 'spacific-eglot)
 
 ;; Load Rust settings
 (require 'spacific-rust)
