@@ -12,15 +12,15 @@
   (lsp-eldoc-render-all t)
   (lsp-idle-delay 0.6)
   (lsp-rust-analyzer-server-display-inlay-hints t)
-  :config
-  (add-hook 'lsp-mode-hook 'lsp-ui-mode)
-  :commands lsp)
-
-(lsp-register-client
+  (lsp-register-client
     (make-lsp-client :new-connection (lsp-tramp-connection "pyright")
                      :major-modes '(python-mode)
                      :remote? t
                      :server-id 'pyright-remote))
+  :config
+  (add-hook 'lsp-mode-hook 'lsp-ui-mode)
+  :commands lsp)
+
 
 (use-package lsp-ui
   :commands lsp-ui-mode
