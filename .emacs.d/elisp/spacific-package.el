@@ -1,4 +1,5 @@
 (require 'package)
+(require 'use-package)
 
 (add-to-list 'package-archives
 	         '("melpa" . "http://melpa.org/packages/") t)
@@ -96,8 +97,7 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-(require 'use-package)
-(require 'quelpa-use-package)
+
 
 ; fetch the list of packages available 
 (unless package-archive-contents
@@ -107,4 +107,7 @@
 (dolist (package required-packages)
   (unless (package-installed-p package)
     (package-install package)))
+
+(require 'quelpa-use-package)
+
 (provide 'spacific-package)
