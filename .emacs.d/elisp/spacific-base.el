@@ -19,6 +19,8 @@
   :config
   (apheleia-global-mode +1))
 
+;; prevent warnings from native compilation
+(setq native-comp-async-report-warnings-errors nil)
 
 ;; enable company-mode everywhere (required for LSP)
 (add-hook 'after-init-hook 'global-company-mode)
@@ -36,6 +38,9 @@
 
 ;; Fix shell encodings
 (setenv "LANG" "en_US.UTF-8")
+
+;; Don't let emacs hog the system
+(setq native-comp-async-jobs-number 3)
 
 ;; Enable narrow-to-region
 (put 'narrow-to-region 'disabled nil)
@@ -70,3 +75,4 @@
            "rg --no-heading "))
 
 (provide 'spacific-base)
+
