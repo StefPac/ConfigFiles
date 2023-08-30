@@ -1,9 +1,10 @@
 (require 'company)
 
 (use-package copilot
-  :quelpa (copilot :fetcher file
-                   :path "~/.emacs.d/elisp/copilot"
-                   :files (:defaults "dist" )))
+  :quelpa (copilot :fetcher github
+                   :repo "zerolfx/copilot.el"
+                   :branch "main"
+                   :files ("dist" "*.el")))
 
 ;; you can utilize :map :hook and :config to customize copilot
 ;; enable completion in insert mode
