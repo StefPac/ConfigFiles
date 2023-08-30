@@ -29,6 +29,9 @@
 (evil-define-key 'normal neotree-mode-map (kbd "A") 'neotree-stretch-toggle)
 (evil-define-key 'normal neotree-mode-map (kbd "H") 'neotree-hidden-file-toggle)
 
+;; Fix 'Y' to yank till the end of line and not the entire line
+(define-key evil-normal-state-map (kbd "Y") "y$")
+
 ;; From https://github.com/noctuid/evil-guide#leader-key
 ;; set leader key in all states
 (evil-leader/set-leader ",") t
