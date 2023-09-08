@@ -11,6 +11,7 @@ CUR_DIR=$PWD
 #
 # needs to be done first because it overwrite .zshrc
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || true
+# remove the omz .zshrc
 rm -rf $HOME/.zshrc
 
 for i in $(ls -a $CUR_DIR);
@@ -28,6 +29,7 @@ done
 
 ln -s $HOME/ConfigFiles/.emacs.d $HOME/.emacs.d
 ln -s $HOME/ConfigFiles/.vim $HOME/.vim
+ln -s $HOME/ConfigFiles/.ssh/rc $HOME/.ssh/rc
 
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
@@ -39,5 +41,9 @@ bin/set-osx-defaults
 # Create a true color TERM setting
 tic -x -o $HOME/.terminfo $CUR_DIR/terminfo-24bit.src
 
-# Link beorg folder
-ln -s ~/Library/Mobile\ Documents/iCloud~com~appsonthemove~beorg/Documents/org
+# Only on macos
+if [[ $(uname) == "Darwin" ]]; then
+    # Link beorg folder
+    ln -s ~/Library/Mobile\ Documents/iCloud~com~appsonthemove~beorg/Documents/org
+fi
+

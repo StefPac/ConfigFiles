@@ -74,5 +74,8 @@
            'grep-find-command
            "rg --no-heading "))
 
+;; Dired auto-revert
+(setq dired-auto-revert-buffer t)
+
 (provide 'spacific-base)
 
