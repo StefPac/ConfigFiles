@@ -9,7 +9,27 @@
 (require 'flyspell)
 (require 'ffap) ; find-file-at-point
 (require 'ansi-color) ; translate ansi escape sequences into colors
+(require 'xterm-color)
 (require 'tooltip)
+
+(defun xterm-color-colorize-shell-command-output ()
+  "Colorize `shell-command' output."
+  (let ((bufs
+         (seq-remove
+          (lambda (x)
+            (not (or (string-prefix-p " *Echo Area" (buffer-name x))
+                     (string-prefix-p "*Shell Command" (buffer-name x)))))
+          (buffer-list))))
+    (dolist (buf bufs)
+      (with-current-buffer buf
+        (xterm-color-colorize-buffer)))))
+
+(defun xterm-color-colorize-shell-command-output-advice (proc &rest rest)
+  (xterm-color-colorize-shell-command-output))
+
+(advice-add 'shell-command :after #'xterm-color-colorize-shell-command-output-advice)
+;; (advice-remove 'shell-command #'xterm-color-colorize-shell-command-output-advice)
+
 
 
 ;; auto-format different source code files extremely intelligently
@@ -17,7 +37,12 @@
 (use-package apheleia
   :ensure t
   :config
-  (apheleia-global-mode +1))
+  (apheleia-global-mode +1)
+  (setq apheleia-remote-algorithm "remote")
+  (add-to-list 'apheleia-formatters
+               '(black "black" "-v" "--line-length" "79" "-")))
+
+;; modify the command for apheleia python black
 
 ;; prevent warnings from native compilation
 (setq native-comp-async-report-warnings-errors nil)

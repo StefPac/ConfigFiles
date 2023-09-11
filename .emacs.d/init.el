@@ -18,6 +18,9 @@
 ;; editor
 (require 'spacific-editing)
 
+;; tramp
+(require 'spacific-tramp)
+
 ;; git
 (require 'spacific-git)
 
