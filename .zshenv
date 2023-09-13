@@ -6,4 +6,4 @@
 # not contain commands that produce output or assume the shell is
 # attached to a tty.
 
-. "$HOME/.cargo/env"
+. $HOME/.profile 

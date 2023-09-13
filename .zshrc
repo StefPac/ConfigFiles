@@ -32,19 +32,6 @@ export LC_ALL=en_US.UTF-8
 export EDITOR='vim'
 
 
-if [ -d "$HOME/.local/bin" ] ; then
-    path=("$HOME/.local/bin" $path)
-fi
-
-if [ -d "$HOME/bin" ] ; then
-    path=("$HOME/bin" $path)
-fi
-
-# Cargo and Rust
-if [ -d "$HOME/.cargo/bin" ] ; then
-    path=("$HOME/.cargo/bin" $path)
-fi
-
 
 # Architecture
 ARCH="$(uname -s)"
@@ -147,12 +134,6 @@ alias e="nvm use --lts; emacs -nw"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Requires pyenv 
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -) 2>/dev/null"
-eval "$(pyenv virtualenv-init -) 2>/dev/null"
-export WORKON_HOME=$PYENV_ROOT/versions
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
