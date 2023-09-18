@@ -1,5 +1,12 @@
 ;; define a function
 
+(defun spacific/save-buffers-persp-kill-terminal ()
+    "Save the current perspective before kill emacs."
+    (interactive)
+    (persp-state-save)
+    (save-buffers-kill-terminal)
+)
+
 (defun spacific/kill-all-dired-buffers ()
   "Kill all dired buffers."
   (dolist (buffer (buffer-list))

@@ -9,6 +9,9 @@
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/elisp"))
 
+;; My own functions
+(require 'spacific-lib)
+
 ;; setup package environment
 (require 'spacific-package)
 
@@ -75,5 +78,6 @@
 ;; Github copilot
 (require 'spacific-copilot)
 
-;; My own functions
-(require 'spacific-lib)
+;; finally load perspective
+
+(require 'spacific-perspective)
