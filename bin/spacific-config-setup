@@ -29,6 +29,8 @@ done
 
 ln -s $HOME/ConfigFiles/.emacs.d $HOME/.emacs.d
 ln -s $HOME/ConfigFiles/.vim $HOME/.vim
+
+# Deal with the `.ssh` directory separately
 ln -s $HOME/ConfigFiles/.ssh/rc $HOME/.ssh/rc
 
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
