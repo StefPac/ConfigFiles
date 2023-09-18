@@ -15,8 +15,14 @@
 
 (delete-selection-mode)
 
-;; Undo 
-;; (global-undo-tree-mode)
+;; UNDO TREE
+(use-package undo-tree
+  :ensure t
+  :diminish
+  :bind (("C-c _" . undo-tree-visualize))
+  :config
+  (global-undo-tree-mode +1)
+  (unbind-key "M-_" undo-tree-map))
 
 ;; Indentation
 (global-set-key (kbd "RET") 'newline-and-indent)  ; Automatically indent when press RET.
@@ -58,59 +64,6 @@
 
 ;; Display the distance between two tab stops as 4 characters wide.
 (setq-default tab-width 4)
-
-;; Scroll one line at a time
-(setq scroll-step            1
-      scroll-margin          7
-      scroll-conservatively  10000)
-
-(use-package perspective
-  :ensure t
-  :bind
-  ("C-x C-b" . persp-list-buffers)         ; or use a nicer switcher, see below
-  :custom
-  (persp-mode-prefix-key (kbd "C-c M-p"))  ; pick your own prefix key here
-  :init
-  (persp-mode))
-
-(use-package company
-  :ensure t
-  :custom
-  (company-idle-delay 0.5) ;; how long to wait until popup
-  :init (global-company-mode)
-  :diminish company-mode
-  :bind
-  (:map company-active-map
-	      ("C-n". company-select-next)
-	      ("C-p". company-select-previous)
-	      ("M-<". company-select-first)
-	      ("M->". company-select-last)))
-
-  :config
-  ;; set default `company-backends'
-
-  (setq company-backends
-        '((company-files          ; files & directory
-           company-keywords       ; keywords
-           company-capf)  ; completion-at-point-functions
-          (company-abbrev company-dabbrev)
-          ))
-(use-package company-statistics
-    :ensure t
-    :init
-    (company-statistics-mode))
-(use-package company-web
-    :ensure t)
-(use-package company-try-hard
-    :ensure t
-    :bind
-    (("C-<tab>" . company-try-hard)
-     :map company-active-map
-     ("C-<tab>" . company-try-hard)))
-(use-package company-quickhelp
-    :ensure t
-    :config
-    (company-quickhelp-mode))
 
 (use-package yasnippet
   :config

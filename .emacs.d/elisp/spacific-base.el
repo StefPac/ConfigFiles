@@ -1,3 +1,6 @@
+;; Increase the garbage collection threshold to 100MB to ease startup
+(setq gc-cons-threshold 100000000)
+
 ;; Enable transient mark region (highlighiting of the region)
 (transient-mark-mode 1)
 
@@ -29,8 +32,6 @@
 
 (advice-add 'shell-command :after #'xterm-color-colorize-shell-command-output-advice)
 ;; (advice-remove 'shell-command #'xterm-color-colorize-shell-command-output-advice)
-
-
 
 ;; auto-format different source code files extremely intelligently
 ;; https://github.com/radian-software/apheleia
@@ -101,6 +102,154 @@
 
 ;; Dired auto-revert
 (setq dired-auto-revert-buffer t)
+
+;; Enable vertico
+(use-package vertico
+  :ensure t
+  :init
+  (setq vertico-resize t)  ;; Grow and shrink the Vertico minibuffer
+  (setq vertico-count 15)  ;; Show more candidates
+  (vertico-mode)
+  :custom
+  (with-eval-after-load 'evil
+    (define-key vertico-map (kbd "C-j") 'vertico-next)
+    (define-key vertico-map (kbd "C-k") 'vertico-previous)
+    (define-key vertico-map (kbd "M-h") 'vertico-directory-up))
+
+  ;; Different scroll margin
+  ;; (setq vertico-scroll-margin 0)
+
+
+  ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
+  ;; (setq vertico-cycle t)
+  )
+
+;; Persist history over Emacs restarts. Vertico sorts by history position.
+(use-package savehist
+  :ensure t
+  :init
+  (savehist-mode))
+
+
+(use-package deadgrep
+  :ensure t
+  :bind (("C-c H" . #'deadgrep)))
+
+(use-package consult
+  :ensure t
+  :config
+  :custom
+    (completion-in-region-function #'consult-completion-in-region)
+    (xref-show-xrefs-function #'consult-xref)
+    (xref-show-definitions-function #'consult-xref)
+    (consult-project-root-function #'deadgrep--project-root));; ensure ripgrep works
+    (global-set-key (kbd "C-s") 'consult-line)
+
+
+(use-package marginalia
+  :ensure t
+  :init (marginalia-mode))
+
+(use-package embark
+  :ensure t
+  :bind ("C-c ." . #'embark-act)
+  :custom (global-set-key [remap describe-bindings] #'embark-bindings))
+
+(use-package embark-consult
+  :ensure t
+  :after (embark consult))
+
+
+;; Optionally use the `orderless' completion style.
+(use-package orderless
+  :ensure t
+  :init
+  ;; Configure a custom style dispatcher (see the Consult wiki)
+  ;; (setq orderless-style-dispatchers '(+orderless-consult-dispatch orderless-affix-dispatch)
+  ;;       orderless-component-separator #'orderless-escapable-split-on-space)
+  (setq completion-styles '(orderless basic)
+        completion-category-defaults nil
+        completion-category-overrides '((file (styles partial-completion)))))
+
+;; Scroll one line at a time
+(setq scroll-step            1
+      scroll-margin          7
+      scroll-conservatively  10000)
+
+(use-package perspective
+  :ensure t
+  :bind
+  ("C-x C-b" . persp-list-buffers)         ; or use a nicer switcher, see below
+  :custom
+  (persp-mode-prefix-key (kbd "C-c M-p"))  ; pick your own prefix key here
+  :init
+  (persp-mode))
+
+;; (use-package company
+;;   :ensure t
+;;   :custom
+;;   (company-idle-delay 0.5) ;; how long to wait until popup
+;;   :init (global-company-mode)
+;;   :diminish company-mode
+;;   :bind
+;;   (:map company-active-map
+;; 	      ("C-n". company-select-next)
+;; 	      ("C-p". company-select-previous)
+;; 	      ("M-<". company-select-first)
+;; 	      ("M->". company-select-last)))
+
+;;   :config
+;;   ;; set default `company-backends'
+
+;;   (setq company-backends
+;;         '((company-files          ; files & directory
+;;            company-keywords       ; keywords
+;;            company-capf)  ; completion-at-point-functions
+;;           (company-abbrev company-dabbrev)
+;;           ))
+;; (use-package company-statistics
+;;     :ensure t
+;;     :init
+;;     (company-statistics-mode))
+;; (use-package company-web
+;;     :ensure t)
+;; (use-package company-try-hard
+;;     :ensure t
+;;     :bind
+;;     (("C-<tab>" . company-try-hard)
+;;      :map company-active-map
+;;      ("C-<tab>" . company-try-hard)))
+;; (use-package company-quickhelp
+;;     :ensure t
+;;     :config
+;;     (company-quickhelp-mode))
+
+(use-package corfu-terminal
+  :ensure t
+  :after corfu)
+
+(use-package corfu
+  :ensure t
+  :requires (corfu-terminal)
+  :init
+    (unless (display-graphic-p)
+        (require 'corfu-terminal)
+        (corfu-terminal-mode +1))
+  :config
+    (setq corfu-cycle t); Allows cycling through candidates
+    (setq corfu-auto t); Enable auto completion
+    (setq corfu-auto-prefix 2) ; Complete with less prefix keys
+    (setq corfu-auto-delay 0.0); No delay for completion
+    (setq corfu-echo-documentation 0.25); Echo docs for current completion option
+
+    :custom
+    (global-corfu-mode 1)
+    (corfu-popupinfo-mode 1)
+    (eldoc-add-command #'corfu-insert)
+    (define-key corfu-map (kbd "M-p") #'corfu-popupinfo-scroll-down)
+    (define-key corfu-map (kbd "M-n") #'corfu-popupinfo-scroll-up)
+    (define-key corfu-map (kbd "M-d") #'corfu-popupinfo-toggle))
+
 
 (provide 'spacific-base)
 

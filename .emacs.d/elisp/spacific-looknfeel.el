@@ -19,11 +19,11 @@
 
 ;; With theme `github-dark-vscode`
 (set-face-background 'evil-search-highlight-persist-highlight-face "dimgray")
-(set-face-background 'helm-match "black")
-(set-face-background 'helm-grep-file "dimgray")
-(set-face-attribute  'helm-selection nil :background "dimgray" :foreground "white")
-(set-face-attribute  'helm-selection-line nil :background "dimgray" :foreground "white")
-(set-face-attribute  'helm-selection-line nil :background "dimgray" :foreground "white")
+;; (set-face-background 'helm-match "black")
+;; (set-face-background 'helm-grep-file "dimgray")
+;; (set-face-attribute  'helm-selection nil :background "dimgray" :foreground "white")
+;; (set-face-attribute  'helm-selection-line nil :background "dimgray" :foreground "white")
+;; (set-face-attribute  'helm-selection-line nil :background "dimgray" :foreground "white")
 (set-face-attribute  'org-table nil :foreground "#a4cbff")
 (set-face-attribute  'org-level-2 nil :foreground "lightgray")
 (set-face-attribute  'org-level-3 nil :foreground "gray")
@@ -43,8 +43,16 @@
 ;; ;; Enable flashing mode-line on errors
 (doom-themes-visual-bell-config)
 
-;; ;; Enable custom neotree theme
-;; (doom-themes-neotree-config)  ; all-the-icons fonts must be installed!
+(use-package all-the-icons
+    :ensure t)
+
+(use-package all-the-icons-dired
+  :ensure t
+  :after all-the-icons
+  :hook (dired-mode . all-the-icons-dired-mode))
+
+;; Enable custom neotree theme
+(doom-themes-neotree-config)  ; all-the-icons fonts must be installed!
 
 ;; (require 'doom-modeline)
 ;; (doom-modeline-mode 1)

@@ -50,9 +50,6 @@
   github-dark-vscode-theme
   god-mode           
   goto-chg           
-  helm               
-  helm-bibtex        
-  helm-projectile    
   highlight          
   indent-guide
   js2-mode           
@@ -80,6 +77,8 @@
   python-black
   quelpa
   quelpa-use-package ;; on MacOS check tar is GNU tar
+  ripgrep
+  rg
   rust-mode
   rustic
   s                  
