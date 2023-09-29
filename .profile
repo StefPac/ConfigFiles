@@ -43,12 +43,12 @@ PYENV_ROOT="$HOME/.pyenv"
 export PYENV_ROOT
 
 if ! command -v pyenv >/dev/null 2>&1; then
-   PATH="$PYENV_ROOT/bin:$PATH"
-   export PATH
-   eval "$(pyenv init - 2>/dev/null)"
-   eval "$(pyenv virtualenv-init - 1>/dev/null)"
-   WORKON_HOME="$PYENV_ROOT/versions"
-   export WORKON_HOME
+    PATH="$PYENV_ROOT/bin:$PATH"
+    export PATH
+    eval "$(pyenv init - 2>/dev/null)"
+    eval "$(pyenv virtualenv-init - 1>/dev/null)"
+    WORKON_HOME="$PYENV_ROOT/versions"
+    export WORKON_HOME
 fi
 
 
