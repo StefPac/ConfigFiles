@@ -7,6 +7,9 @@
 ;; short answers
 (setq use-short-answers t)
 
+;; use auth sources that are encrypted
+(setq auth-sources '("~/.authinfo.gpg"))
+
 ;; Various
 ;;(require 'folding)
 (require 'flyspell)
@@ -100,8 +103,15 @@
            'grep-find-command
            "rg --no-heading "))
 
-;; Dired auto-revert
-(setq dired-auto-revert-buffer t)
+(use-package dired
+  :ensure nil
+  :config
+    (setq dired-listing-switches "-alh")
+    (setq dired-auto-revert-buffer t)
+    (put 'dired-find-alternate-file 'disabled nil) ; disables warning
+    (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file) ; was dired-advertised-find-file
+    (define-key dired-mode-map (kbd "^"  ) (lambda () (interactive) (find-alternate-file ".."))) ; was dired-up-directory 
+)
 
 ;; Enable vertico
 (use-package vertico
@@ -114,7 +124,7 @@
   (with-eval-after-load 'evil
     (define-key vertico-map (kbd "C-j") 'vertico-next)
     (define-key vertico-map (kbd "C-k") 'vertico-previous)
-    (define-key vertico-map (kbd "M-h") 'vertico-directory-up))
+    (define-key vertico-map (kbd "M-h") 'vertico-diretory-up))
 
   ;; Different scroll margin
   ;; (setq vertico-scroll-margin 0)

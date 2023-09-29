@@ -4,15 +4,15 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(yasnippet-snippets wfnames vertico undo-tree tuareg tree-sitter
-                        toc-org rustic ripgrep rg quelpa-use-package
-                        python-black pyenv-mode projectile popup
-                        perspective ox-rst ox-gfm org-plus-contrib
-                        orderless ob-ipython neotree marginalia
-                        magithub magit-reviewboard magit-gh-pulls
-                        magit-diff-flycheck lsp-ui lsp-pyright
-                        key-chord js2-refactor indent-guide
-                        github-review github-modern-theme
+   '(yasnippet-snippets wfnames web-completion-data vertico undo-tree
+                        tuareg tree-sitter toc-org rustic ripgrep rg
+                        quelpa-use-package python-black pyenv-mode
+                        projectile pos-tip popup perspective ox-rst
+                        ox-gfm orderless olivetti ob-ipython neotree
+                        marginalia magithub magit-reviewboard
+                        magit-gh-pulls magit-diff-flycheck lsp-ui
+                        lsp-pyright key-chord js2-refactor
+                        indent-guide github-review github-modern-theme
                         github-dark-vscode-theme evil-visualstar
                         evil-terminal-cursor-changer evil-tabs
                         evil-surround evil-space
