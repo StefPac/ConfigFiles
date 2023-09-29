@@ -27,3 +27,4 @@
 *~
 *.sqlite
 .ssh
+.emacs.d/persp-auto-save
