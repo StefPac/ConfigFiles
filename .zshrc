@@ -34,9 +34,8 @@ export EDITOR='vim'
 
 
 # Architecture
-ARCH="$(uname -s)"
-
-if [[ $ARCH = "Darwin" ]]; then
+arch="$(uname -s)"
+if [[ $arch = "Darwin" ]]; then
     MACOS_CONFIG=~/ConfigFiles/.zshrc.macos
     source $MACOS_CONFIG
 fi

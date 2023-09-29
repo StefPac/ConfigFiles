@@ -38,6 +38,17 @@ if [ -d "$HOME/.cargo/bin" ] ; then
     export PATH
 fi
 
+arch=$(uname -s)
+if [ "$arch" = "Darwin" ]; then
+    BREW_PREFIX=/opt/homebrew
+    PATH=${BREW_PREFIX}/sbin:$PATH
+    PATH=${BREW_PREFIX}/bin:$PATH
+    export PATH
+
+    BREW_JAVA_PREFIX=$(brew --prefix java);
+    PATH=${BREW_JAVA_PREFIX}/bin:$PATH
+    export PATH
+fi
 # Requires pyenv
 PYENV_ROOT="$HOME/.pyenv"
 export PYENV_ROOT
