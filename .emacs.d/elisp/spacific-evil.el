@@ -101,6 +101,10 @@
        
        (t (setq unread-command-events (append unread-command-events
 					                          (list evt))))))))
+(eval-after-load 'perspective
+  '(progn
+     (evil-ex-define-cmd "bn" '(lambda () (interactive) (spacific/persp-next-buffer)))
+     (evil-ex-define-cmd "bp" '(lambda () (interactive) (spacific/persp-prev-buffer)))))
 (provide 'spacific-evil)
 
 
