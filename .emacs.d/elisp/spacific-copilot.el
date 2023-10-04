@@ -1,4 +1,5 @@
 (use-package copilot
+  :after evil
   :quelpa (copilot :fetcher github
                    :repo "zerolfx/copilot.el"
                    :branch "main"
