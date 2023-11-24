@@ -1,6 +1,3 @@
-;; add latest org-mode to load path
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/org-plus-contrib" t))
-
 ;; set the path for ditaa
 ;; TODO fix for working on linux too
 (setq org-ditaa-jar-path "/usr/local/Cellar/ditaa/0.11.0_1/libexec/ditaa-0.11.0-standalone.jar")

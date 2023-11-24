@@ -8,7 +8,7 @@
 
 
 (use-package forge
-  :ensure t
+ 
   :after magit)
 
 ;; hack to eliminate weirdness
@@ -16,7 +16,7 @@
   (defvar bug-reference-auto-setup-functions '()))
 
 ;; (use-package code-review
-;;   :ensure t
+
 ;;   :after magit
 ;;   :bind (:map forge-topic-mode-map ("C-c r" . #'code-review-forge-pr-at-point))
 ;;   :bind (:map code-review-mode-map (("C-c n" . #'code-review-comment-jump-next)

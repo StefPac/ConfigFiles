@@ -21,5 +21,5 @@
     (setq elpy-rpc-timeout 2)))
 
 (use-package flymake-ruff
-    :ensure t
+
     :hook (python-mode . flymake-ruff-load))                     

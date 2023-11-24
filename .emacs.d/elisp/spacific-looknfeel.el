@@ -44,10 +44,10 @@
 (doom-themes-visual-bell-config)
 
 (use-package all-the-icons
-    :ensure t)
+)
 
 (use-package all-the-icons-dired
-  :ensure t
+
   :after all-the-icons
   :hook (dired-mode . all-the-icons-dired-mode))
 

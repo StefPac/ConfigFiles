@@ -1,12 +1,32 @@
-(require 'package)
+;; Install straight.el
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
+;; ;; Install use-package
+(straight-use-package 'use-package)
+(setq straight-use-package-by-default t)
+
+;; Install org early before builtin version gets loaded
+(straight-use-package 'org)
+;; (require 'package)
 (require 'use-package)
 
-(add-to-list 'package-archives
-	         '("melpa" . "http://melpa.org/packages/") t)
-(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
+;; (add-to-list 'package-archives
+;; 	         '("melpa" . "http://melpa.org/packages/") t)
+;; (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 
 ; activate all the packages (in particular autoloads)
-(package-initialize)
+;; (package-initialize)
 
 ;; TODO have the list printed to file upon init, and the load from
 ;; that file.

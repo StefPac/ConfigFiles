@@ -31,7 +31,7 @@
   )
 
 (use-package lsp-pyright
-  :ensure
+ 
   :hook (python-mode . (lambda () (require 'lsp-pyright))))
   ;; :init (when (executable-find "python3")
   ;;         (setq lsp-pyright-python-executable-cmd "python3")))

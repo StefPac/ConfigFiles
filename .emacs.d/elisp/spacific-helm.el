@@ -36,7 +36,7 @@
   :bind (("C-S-P" . helm-projectile-switch-project)
          :map evil-normal-state-map
          ("C-p" . helm-projectile))
-  :ensure t
+ 
   :config
   (evil-leader/set-key
     "ps" 'helm-projectile-ag

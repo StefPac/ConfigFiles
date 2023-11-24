@@ -39,7 +39,7 @@
 ;; auto-format different source code files extremely intelligently
 ;; https://github.com/radian-software/apheleia
 (use-package apheleia
-  :ensure t
+  
   :config
   (apheleia-global-mode +1)
   (setq apheleia-remote-algorithm "remote")
@@ -99,23 +99,23 @@
 ;; Check if rg is installed then use rg instead of grep
 (require 'grep)
 (when (executable-find "rg")
-    (grep-apply-setting
-           'grep-find-command
-           "rg --no-heading "))
+  (grep-apply-setting
+   'grep-find-command
+   "rg --no-heading "))
 
 (use-package dired
-  :ensure nil
+  :straight nil
   :config
-    (setq dired-listing-switches "-alh")
-    (setq dired-auto-revert-buffer t)
-    (put 'dired-find-alternate-file 'disabled nil) ; disables warning
-    (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file) ; was dired-advertised-find-file
-    (define-key dired-mode-map (kbd "^"  ) (lambda () (interactive) (find-alternate-file ".."))) ; was dired-up-directory 
-)
+  (setq dired-listing-switches "-alh")
+  (setq dired-auto-revert-buffer t)
+  (put 'dired-find-alternate-file 'disabled nil) ; disables warning
+  (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file) ; was dired-advertised-find-file
+  (define-key dired-mode-map (kbd "^"  ) (lambda () (interactive) (find-alternate-file ".."))) ; was dired-up-directory 
+  )
 
 ;; Enable vertico
 (use-package vertico
-  :ensure t
+
   :init
   (setq vertico-resize t)  ;; Grow and shrink the Vertico minibuffer
   (setq vertico-count 15)  ;; Show more candidates
@@ -136,43 +136,43 @@
 
 ;; Persist history over Emacs restarts. Vertico sorts by history position.
 (use-package savehist
-  :ensure t
+
   :init
   (savehist-mode))
 
 
 (use-package deadgrep
-  :ensure t
+
   :bind (("C-c H" . #'deadgrep)))
 
 (use-package consult
-  :ensure t
+
   :config
   :custom
-    (completion-in-region-function #'consult-completion-in-region)
-    (xref-show-xrefs-function #'consult-xref)
-    (xref-show-definitions-function #'consult-xref)
-    (consult-project-root-function #'deadgrep--project-root));; ensure ripgrep works
-    (global-set-key (kbd "C-s") 'consult-line)
+  (completion-in-region-function #'consult-completion-in-region)
+  (xref-show-xrefs-function #'consult-xref)
+  (xref-show-definitions-function #'consult-xref)
+  (consult-project-root-function #'deadgrep--project-root));; ensure ripgrep works
+(global-set-key (kbd "C-s") 'consult-line)
 
 
 (use-package marginalia
-  :ensure t
+
   :init (marginalia-mode))
 
 (use-package embark
-  :ensure t
+
   :bind ("C-c ." . #'embark-act)
   :custom (global-set-key [remap describe-bindings] #'embark-bindings))
 
 (use-package embark-consult
-  :ensure t
+
   :after (embark consult))
 
 
 ;; Optionally use the `orderless' completion style.
 (use-package orderless
-  :ensure t
+
   :init
   ;; Configure a custom style dispatcher (see the Consult wiki)
   ;; (setq orderless-style-dispatchers '(+orderless-consult-dispatch orderless-affix-dispatch)
@@ -187,30 +187,57 @@
       scroll-conservatively  10000)
 
 (use-package corfu-terminal
-  :ensure t
+
   :after corfu)
 
 (use-package corfu
-  :ensure t
+
   :requires (corfu-terminal)
   :init
-    (unless (display-graphic-p)
-        (require 'corfu-terminal)
-        (corfu-terminal-mode +1))
+  (unless (display-graphic-p)
+    (require 'corfu-terminal)
+    (corfu-terminal-mode +1))
   :config
-    (setq corfu-cycle t); Allows cycling through candidates
-    (setq corfu-auto t); Enable auto completion
-    (setq corfu-auto-prefix 2) ; Complete with less prefix keys
-    (setq corfu-auto-delay 0.0); No delay for completion
-    (setq corfu-echo-documentation 0.25); Echo docs for current completion option
+  (setq corfu-cycle t); Allows cycling through candidates
+  (setq corfu-auto t); Enable auto completion
+  (setq corfu-auto-prefix 2) ; Complete with less prefix keys
+  (setq corfu-auto-delay 0.0); No delay for completion
+  (setq corfu-echo-documentation 0.25); Echo docs for current completion option
 
-    :custom
-    (global-corfu-mode 1)
-    (corfu-popupinfo-mode 1)
-    (eldoc-add-command #'corfu-insert)
-    (define-key corfu-map (kbd "M-p") #'corfu-popupinfo-scroll-down)
-    (define-key corfu-map (kbd "M-n") #'corfu-popupinfo-scroll-up)
-    (define-key corfu-map (kbd "M-d") #'corfu-popupinfo-toggle))
+  :custom
+  (global-corfu-mode 1)
+  (corfu-popupinfo-mode 1)
+  (eldoc-add-command #'corfu-insert)
+  (define-key corfu-map (kbd "M-p") #'corfu-popupinfo-scroll-down)
+  (define-key corfu-map (kbd "M-n") #'corfu-popupinfo-scroll-up)
+  (define-key corfu-map (kbd "M-d") #'corfu-popupinfo-toggle))
+
+;; Terminal, use the `eat` :package
+(straight-use-package
+ '(eat :type git
+       :host codeberg
+       :repo "akib/emacs-eat"
+       :files ("*.el" ("term" "term/*.el") "*.texi"
+               "*.ti" ("terminfo/e" "terminfo/e/*")
+               ("terminfo/65" "terminfo/65/*")
+               ("integration" "integration/*")
+               (:exclude ".dir-locals.el" "*-tests.el"))))
+
+;; Send each line in the selected region to the tmux pane `emacs.2`
+(defun spacific-tmux-send-region ()
+  ;; for each line of the region
+  (interactive
+   (if (use-region-p)
+       (let ((beg (region-beginning))
+             (end (region-end)))
+         (while (< beg end)
+           (goto-char beg)
+
+           ;; put the line between single quotes
+           (setq line (buffer-substring-no-properties beg (line-end-position)))
+           (setq line (concat "'" line "'"))
+           (call-process-shell-command (concat "tmux send -t emacs.2 " line " C-m"))
+           (setq beg (1+ (line-end-position))))))))
 
 
 (provide 'spacific-base)

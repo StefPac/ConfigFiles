@@ -17,7 +17,7 @@
 
 ;; UNDO TREE
 (use-package undo-tree
-  :ensure t
+ 
   :diminish
   :bind (("C-c _" . undo-tree-visualize))
   :config
