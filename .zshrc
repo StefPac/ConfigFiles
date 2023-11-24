@@ -130,6 +130,11 @@ source $ZSH/oh-my-zsh.sh
 alias ec="emacsclient -t"
 alias e="nvm use --lts; emacs -nw"
 
+# Useful when copying lines of code from documentation that includes
+# prompts, or from comments. Source: https://github.com/jeffs/geode-profile-home
+function $ { "$@" }
+function // { "$@" }
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -140,3 +145,8 @@ alias e="nvm use --lts; emacs -nw"
 
 # Shell assistant
 [[ ! -f ConfigFiles/bin/hey_gpt.zsh ]] || source ConfigFiles/bin/hey_gpt.zsh
+
+
+# pyenv - depends on .profile declaring the right variables 
+eval "$(pyenv init - 2>/dev/null)"
+eval "$(pyenv virtualenv-init - 1>/dev/null)"
