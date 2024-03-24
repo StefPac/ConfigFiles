@@ -1,11 +1,11 @@
 ;; define a function
 
 (defun spacific/save-buffers-persp-kill-terminal ()
-    "Save the current perspective before kill emacs."
-    (interactive)
-    (persp-state-save)
-    (save-buffers-kill-terminal)
-)
+  "Save the current perspective before kill emacs."
+  (interactive)
+  (persp-state-save)
+  (save-buffers-kill-terminal)
+  )
 
 (defun spacific/kill-all-dired-buffers ()
   "Kill all dired buffers."
@@ -19,6 +19,10 @@
   (interactive)
   (shell-command-on-region (point-min) (point-max) "pbcopy"))
 
+(defun spacific/shell-command-on-line ()
+  "Run a shell command on the current line."
+  (interactive)
+  (shell-command (thing-at-point 'line)))
 
 (defun spacific/persp-move-buffer (direction)
   "Move to the next or previous buffer in the current perspective."
@@ -34,10 +38,10 @@
 
 (defun spacific/persp-next-buffer ()
   "Move to the next buffer in the current perspective"
-   (spacific/persp-move-buffer 'next))
+  (spacific/persp-move-buffer 'next))
 
 (defun spacific/persp-prev-buffer ()
   "Move to the previous buffer in the current perspective"
-   (spacific/persp-move-buffer 'prev))
+  (spacific/persp-move-buffer 'prev))
 
 (provide 'spacific-lib)
