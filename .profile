@@ -48,6 +48,9 @@ if [ "$arch" = "Darwin" ]; then
     BREW_JAVA_PREFIX=$(brew --prefix java);
     PATH=${BREW_JAVA_PREFIX}/bin:$PATH
     export PATH
+
+    source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+    source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 fi
 # Requires pyenv
 PYENV_ROOT="$HOME/.pyenv"
@@ -59,6 +62,5 @@ if ! command -v pyenv >/dev/null 2>&1; then
     WORKON_HOME="$PYENV_ROOT/versions"
     export WORKON_HOME
 fi
-
 
 
