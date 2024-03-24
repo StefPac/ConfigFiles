@@ -1,5 +1,6 @@
 ;; see https://github.com/redguardtoo/emacs.d/blob/6dc3fa2c460bdae63b2442455599358efb76a546/lisp/init-essential.el#L151
 (use-package tramp
+  :straight (:type built-in)
   :defer t
   :custom
   (tramp-default-method "sshx") ;; faster for file transfer
