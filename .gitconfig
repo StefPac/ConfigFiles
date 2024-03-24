@@ -1,6 +1,7 @@
 [user]
 	useConfigOnly = true
 	name = Stefano Pacifico
+	email = github@pacifico.cc
 [push]
 	default = simple
 [core]
