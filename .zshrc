@@ -144,9 +144,10 @@ function // { "$@" }
 
 
 # Shell assistant
-[[ ! -f ConfigFiles/bin/hey_gpt.zsh ]] || source ConfigFiles/bin/hey_gpt.zsh
+[[ ! -f $HOME/ConfigFiles/bin/hey_gpt.zsh ]] || source $HOME/ConfigFiles/bin/hey_gpt.zsh
 
 
 # pyenv - depends on .profile declaring the right variables 
 eval "$(pyenv init - 2>/dev/null)"
 eval "$(pyenv virtualenv-init - 1>/dev/null)"
+export WORKON_HOME="$HOME/.pyenv/versions/"
