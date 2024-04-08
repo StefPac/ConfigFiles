@@ -1,8 +1,8 @@
 (when window-system
   (cond ((string-equal system-type "darwin")
-	 (set-frame-font "Menlo-15"))
-	((string-equal system-type "gnu/linux")
-	 (set-frame-font "Droid Sans Mono-12"))))
+	     (set-frame-font "Berkeley Mono-18"))
+	    ((string-equal system-type "gnu/linux")
+	     (set-frame-font "Droid Sans Mono-12"))))
 
 ;; Disable Bell
 (setq visible-bell t)
@@ -15,7 +15,7 @@
 
 ;; delete current theme when loading another
 (defadvice load-theme (before theme-dont-propagate activate)
-   (mapc #'disable-theme custom-enabled-themes))
+  (mapc #'disable-theme custom-enabled-themes))
 
 ;; With theme `github-dark-vscode`
 (set-face-background 'evil-search-highlight-persist-highlight-face "dimgray")
@@ -44,7 +44,7 @@
 (doom-themes-visual-bell-config)
 
 (use-package all-the-icons
-)
+  )
 
 (use-package all-the-icons-dired
 
