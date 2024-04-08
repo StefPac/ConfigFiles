@@ -1,5 +1,17 @@
 ;; define a function
 
+(defun spacific/pyvenv-workon ()
+  "Activate a python virtualenv."
+  ;; run pyvenv-workon as if invoked from alt-x
+  (interactive)
+  (let ((default-directory (projectile-project-root)))
+    (call-interactively 'pyvenv-workon))
+
+  ;; check if eglot is running and reconnect
+  (if (bound-and-true-p eglot--managed-mode)
+      (call-interactively 'eglot-reconnect)))
+
+
 (defun spacific/save-buffers-persp-kill-terminal ()
   "Save the current perspective before kill emacs."
   (interactive)
