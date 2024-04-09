@@ -34,6 +34,7 @@ brew tap homebrew/cask-fonts
 brew install font-fira-code --cask
 brew install font-ibm-plex --cask
 ```
+++ Install Berkeley Mono
 
 + Install iTerm 2
 ```
