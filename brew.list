@@ -1,0 +1,17 @@
+awscli
+bat
+emacs
+fd
+git
+gnugpg
+jq
+htop
+pigz
+pv
+pyenv
+pyenv-virtualenv
+pyenv-virtualenvwrapper
+rg
+rust
+tmux
+tree
