@@ -56,4 +56,20 @@
   "Move to the previous buffer in the current perspective"
   (spacific/persp-move-buffer 'prev))
 
+(defun spacific/tmux-send-region ()
+  "Send each line in the selected region to the tmux pane `emacs.2`"
+  ;; for each line of the region
+  (interactive
+   (if (use-region-p)
+       (let ((beg (region-beginning))
+             (end (region-end)))
+         (while (< beg end)
+           (goto-char beg)
+
+           ;; put the line between single quotes
+           (setq line (buffer-substring-no-properties beg (line-end-position)))
+           (setq line (concat "'" line "'"))
+           (call-process-shell-command (concat "tmux send -t emacs.2 " line " C-m"))
+           (setq beg (1+ (line-end-position))))))))
+
 (provide 'spacific-lib)
