@@ -11,4 +11,6 @@ fi
 if type "gtar" > /dev/null; then
     alias tar="gtar"
 fi
-
+if type "gsed" > /dev/null; then
+    alias tar="gtar"
+fi
