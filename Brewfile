@@ -3,7 +3,9 @@ bat
 emacs
 fd
 git
-gnugpg
+google-cloud-sdk
+gnupg
+gnu-tar
 jq
 htop
 pigz
@@ -12,6 +14,8 @@ pyenv
 pyenv-virtualenv
 pyenv-virtualenvwrapper
 rg
-rust
 tmux
 tree
+wget
+wireguard
+
