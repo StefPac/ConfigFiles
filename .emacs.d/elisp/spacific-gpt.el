@@ -5,10 +5,15 @@
 
 ;; enable completion in insert mode
 (customize-set-variable 'copilot-enable-predicates '(evil-insert-state-p))
-(add-hook 'prog-mode-hook 'copilot-mode)
+
+;; Will note enable copilot-mode by default on every buffer to avoid
+;; continuously sending data to it.
+;;
+;; TODO: assign a hot-key for copilot-mode in buffer
 
 (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
 (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
 
-(provide 'spacific-copilot)
+(use-package gptel)
 
+(provide 'spacific-gpt)
