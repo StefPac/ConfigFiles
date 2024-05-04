@@ -4,6 +4,39 @@
 
 set -ue
 
+# brew install gcc libgccjit
+# required for building emacs
+
+# autoconf
+# coreutils
+# dbus
+# expat
+# gcc
+# gmp
+# gnu-sed
+# gnutls
+# jansson
+# libffi
+# libgccjit
+# libiconv
+# librsvg
+# libtasn1
+# libunistring
+# libxml2
+# little-cms2
+# mailutils
+# make
+# ncurses
+# nettle
+# pkg-config
+# sqlite
+# texinfo
+# tree-sitter
+# webp
+# zlib
+
+./autogen.sh
+
 CFLAGS='-march=native -O2' ./configure \
        --with-gnutls \
        --with-json \

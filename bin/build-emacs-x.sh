@@ -8,6 +8,7 @@
 # brew install librsvg
 # brew install imagemagick
 # brew install jansson
+# brew install texinfo
 set -ue
 
 export PATH=/usr/bin:$PATH
