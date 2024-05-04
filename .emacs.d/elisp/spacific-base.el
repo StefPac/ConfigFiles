@@ -51,9 +51,6 @@
 ;; prevent warnings from native compilation
 (setq native-comp-async-report-warnings-errors nil)
 
-;; enable company-mode everywhere (required for LSP)
-(add-hook 'after-init-hook 'global-company-mode)
-
 ;; Always use UTF-8
 (set-language-environment "UTF-8")
 (prefer-coding-system 'utf-8)
@@ -166,8 +163,10 @@
   :custom (global-set-key [remap describe-bindings] #'embark-bindings))
 
 (use-package embark-consult
+  :ensure t
+  :hook
+  (embark-collect-mode . consult-preview-at-point-mode))
 
-  :after (embark consult))
 
 
 ;; Optionally use the `orderless' completion style.
@@ -222,23 +221,6 @@
                ("terminfo/65" "terminfo/65/*")
                ("integration" "integration/*")
                (:exclude ".dir-locals.el" "*-tests.el"))))
-
-;; Send each line in the selected region to the tmux pane `emacs.2`
-(defun spacific-tmux-send-region ()
-  ;; for each line of the region
-  (interactive
-   (if (use-region-p)
-       (let ((beg (region-beginning))
-             (end (region-end)))
-         (while (< beg end)
-           (goto-char beg)
-
-           ;; put the line between single quotes
-           (setq line (buffer-substring-no-properties beg (line-end-position)))
-           (setq line (concat "'" line "'"))
-           (call-process-shell-command (concat "tmux send -t emacs.2 " line " C-m"))
-           (setq beg (1+ (line-end-position))))))))
-
 
 (provide 'spacific-base)
 
