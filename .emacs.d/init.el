@@ -75,8 +75,8 @@
 ;; eye-candy
 (require 'spacific-looknfeel)
 
-;; Github copilot
-(require 'spacific-copilot)
+;; GPT models 
+(require 'spacific-gpt)
 
 ;; finally load perspective
 

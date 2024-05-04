@@ -10,6 +10,7 @@
   (global-set-key (kbd "C-x C-c") 'spacific/save-buffers-persp-kill-terminal)
   (setq persp-state-default-file (concat user-emacs-directory "persp-auto-save"))
   (persp-mode)
+  ;; TODO: check if persp-auto-save exists
   (persp-state-load persp-state-default-file)
   ;; if consult is loaded
   (with-eval-after-load 'consult)
