@@ -43,8 +43,11 @@
 ;; set local leader
 (evil-set-leader 'normal "," t)
 
-; Make horizontal movement cross lines
+;; Make horizontal movement cross lines
 (setq-default evil-cross-lines t)
+
+;; , p - evil-paste-from-register
+(evil-leader/set-key "p" 'evil-paste-from-register)
 
 ;; Remap ';' to ':'
 (define-key evil-normal-state-map (kbd ";") 'evil-ex)
@@ -105,6 +108,28 @@
   '(progn
      (evil-ex-define-cmd "bn" '(lambda () (interactive) (spacific/persp-next-buffer)))
      (evil-ex-define-cmd "bp" '(lambda () (interactive) (spacific/persp-prev-buffer)))))
+
+(use-package general
+  :after evil
+  :config
+  (general-create-definer tyrant-def
+    :states '(normal insert motion emacs)
+    :keymaps 'override
+    :prefix ","
+    :non-normal-prefix "M-,")
+  (tyrant-def "" nil)
+
+  (general-def universal-argument-map
+    ", u" 'universal-argument-more)
+
+  (tyrant-def
+    "bd" 'kill-this-buffer
+    "fd" 'init-file
+    "ff" 'find-file
+    "fs" 'save-buffer
+    "k"  'switch-to-buffer
+    "xh" 'mark-whole-buffer))
+
 (provide 'spacific-evil)
 
 
