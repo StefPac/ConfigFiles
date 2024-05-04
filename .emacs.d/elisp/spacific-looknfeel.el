@@ -51,6 +51,14 @@
   :after all-the-icons
   :hook (dired-mode . all-the-icons-dired-mode))
 
+;; TODO: need to refactor X-based packages into an ad-hoc module
+(use-package nerd-icons
+  ;; :custom
+  ;; The Nerd Font you want to use in GUI
+  ;; "Symbols Nerd Font Mono" is the default and is recommended
+  ;; but you can use any other Nerd Font if you want
+  ;; (nerd-icons-font-family "Symbols Nerd Font Mono")
+  )
 ;; Enable custom neotree theme
 (doom-themes-neotree-config)  ; all-the-icons fonts must be installed!
 
