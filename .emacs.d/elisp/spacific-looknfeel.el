@@ -43,13 +43,13 @@
 ;; ;; Enable flashing mode-line on errors
 (doom-themes-visual-bell-config)
 
-(use-package all-the-icons
-  )
+;; (use-package all-the-icons
+;;   )
 
-(use-package all-the-icons-dired
+;; (use-package all-the-icons-dired
 
-  :after all-the-icons
-  :hook (dired-mode . all-the-icons-dired-mode))
+;;   :after all-the-icons
+;;   :hook (dired-mode . all-the-icons-dired-mode))
 
 ;; TODO: need to refactor X-based packages into an ad-hoc module
 (use-package nerd-icons
@@ -59,6 +59,10 @@
   ;; but you can use any other Nerd Font if you want
   ;; (nerd-icons-font-family "Symbols Nerd Font Mono")
   )
+
+(use-package nerd-icons-dired
+  :hook
+  (dired-mode . nerd-icons-dired-mode))
 ;; Enable custom neotree theme
 (doom-themes-neotree-config)  ; all-the-icons fonts must be installed!
 

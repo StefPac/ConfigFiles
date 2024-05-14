@@ -102,6 +102,6 @@
 (mapcar #'straight-use-package required-packages)
 
 ;; update everything and install deps recursively
-(straight-pull-all)
+;; (straight-pull-all)
 
 (provide 'spacific-package)

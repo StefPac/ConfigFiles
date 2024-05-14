@@ -21,6 +21,7 @@ bin/spacific-config-setup
 + Copy following files from previous system
 ```
 .emacs/tramp-ssh-config.el
+.authinfo
 ```
 
 + Configure p10k 
@@ -74,9 +75,19 @@ pyenv install -l
 pyenv install 3.12.2
 ```
 
-++ Insstall nerd fonts 
+++ Install nerd fonts 
 ```
 brew install --cask font-symbols-only-nerd-font
 ```
 
 + Install Printer Drivers
+
++ Create GPG key
+
+Current:
+```
+    pub   ed25519 2024-05-06 [SC] [expires: 2025-05-06]
+        E153C133D71A6A01FB2885F906E0132EAE707E2C
+    uid                      Stefano Pacifico <gpg@pacifico.cc>
+    sub   cv25519 2024-05-06 [E] [expires: 2025-05-06]
+```

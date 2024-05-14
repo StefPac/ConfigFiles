@@ -17,6 +17,7 @@
 .emacs.d/eln-cache/
 .emacs.d/elpy/
 .emacs.d/spacific-erc-auth.el
+.emacs.d/straight/
 
 .vim/.netrwhist
 
